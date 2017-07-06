@@ -16,7 +16,7 @@ parameters:
     neutron_gateway_agent_mode: legacy
     neutron_compute_agent_mode: legacy
 
-    neutron_l3_ha: False
+    neutron_l3_ha: True
     compute_dpdk_driver: uio
     compute_ovs_pmd_cpu_mask: "0x6"
     compute_ovs_dpdk_socket_mem: "1024"

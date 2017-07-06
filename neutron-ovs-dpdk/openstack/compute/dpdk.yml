@@ -1,0 +1,3 @@
+classes:
+- cluster.neutron-ovs-dpdk.openstack.compute
+- system.neutron.compute.nfv.dpdk
