@@ -1,0 +1,87 @@
+classes:
+- system.linux.system.repo.ubuntu
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.nova.compute.nfv.hugepages
+- system.nova.compute.nfv.cpu_pinning
+- system.nova.compute.cluster
+- system.neutron.compute.cluster
+- system.ceilometer.agent.cluster
+- cluster.neutron-ovs-dpdk.infra
+parameters:
+  _param:
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ${_param:openstack_control_node01_hostname}
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ${_param:openstack_control_node02_hostname}
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ${_param:openstack_control_node03_hostname}
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+    nova_vncproxy_url: https://${_param:cluster_public_host}:6080
+    primary_first_nic: eth1
+    primary_second_nic: eth2
+    linux_system_codename: xenial
+    dpdk0_name: enp5s0f1
+    dpdk1_name: enp5s0f2
+    dpdk0_pci: '"0000:05:00.1"'
+    dpdk1_pci: '"0000:05:00.2"'
+    compute_dpdk_driver: uio
+    compute_ovs_pmd_cpu_mask: ${_param:compute_ovs_pmd_cpu_mask}
+    compute_ovs_dpdk_socket_mem: ${_param:compute_ovs_dpdk_socket_mem}
+    compute_ovs_dpdk_lcore_mask: ${_param:compute_ovs_dpdk_lcore_mask}
+    compute_ovs_memory_channels: "2"
+
+  neutron:
+    compute:
+      backend:
+        tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
+
+linux:
+    network:
+      interface:
+        dpdk0:
+          name: ${_param:dpdk0_name}
+          pci: ${_param:dpdk0_pci}
+          driver: igb_uio
+          bond: dpdkbond1
+          enabled: true
+          type: dpdk_ovs_port
+          n_rxq: "4"
+          pmd_rxq_affinity: "0:11,1:31,2:12,3:32"
+        dpdk1:
+          name: ${_param:dpdk1_name}
+          pci: ${_param:dpdk1_pci}
+          driver: igb_uio
+          bond: dpdkbond1
+          enabled: true
+          type: dpdk_ovs_port
+          n_rxq: "9"
+          pmd_rxq_affinity: "0:11,1:31,2:12,3:32,4:13,5:33,6:14,7:34,8:10"
+        dpdkbond1:
+          enabled: true
+          bridge: br-prv
+          type: dpdk_ovs_bond
+          mode: active-backup
+        br-prv:
+          enabled: true
+          type: dpdk_ovs_bridge
+        deploy_nic.1806:
+          name: ${_param:deploy_nic}.1806
+          enabled: true
+          proto: manual
+          type: vlan
+          use_interfaces:
+          - ${_param:deploy_nic}
+        br_ctl:
+          enabled: true
+          type: bridge
+          proto: static
+          address: ${_param:control_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - ${_param:deploy_nic}.1806
+      openvswitch:
+        pmd_cpu_mask: "${_param:compute_ovs_pmd_cpu_mask}"
+        dpdk_socket_mem: "${_param:compute_ovs_dpdk_socket_mem}"
+        dpdk_lcore_mask: "${_param:compute_ovs_dpdk_lcore_mask}"
