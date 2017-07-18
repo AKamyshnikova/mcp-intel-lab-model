@@ -13,7 +13,6 @@ classes:
 - system.xtrabackup.server.single
 - system.reclass.storage.system.physical_control_cluster
 - system.reclass.storage.system.infra_maas_single
-- system.reclass.storage.system.openstack_gateway_cluster
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_database_cluster
 - cluster.neutron-ovs-dpdk.infra
@@ -69,6 +68,8 @@ parameters:
         openstack_gateway_node02:
           name: gtw02
           domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.gateway
           params:
             linux_system_codename: xenial
         openstack_compute_rack01:

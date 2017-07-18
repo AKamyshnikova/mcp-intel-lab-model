@@ -2,10 +2,8 @@
 classes:
 - system.linux.system.single
 - system.openssh.server.team.lab
-- system.openssh.server.team.tcpcloud
 - system.openssh.server.team.mcp_qa
-- system.openssh.server.team.l1_support
-- system.openssh.server.team.l2_support
+- system.openssh.server.team.networking
 - cluster.neutron-ovs-dpdk.openstack
 parameters:
   _param:
