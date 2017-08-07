@@ -18,16 +18,3 @@ parameters:
     system:
       name: cfg01.neutron-ovs-dpdk.local.yaml
       domain: bootstrap.local
-# ########
-  salt:
-    master:
-      accept_policy: open_mode
-      source:
-        engine: pkg
-        
-    minion:
-      source:
-        engine: pkg
-        
-# ########
-# vim: ft=yaml sw=2 ts=2 sts=2

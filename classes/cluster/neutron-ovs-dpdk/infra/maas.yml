@@ -17,25 +17,51 @@ parameters:
           - ${_param:dns_server01}
           - ${_param:dns_server02}
 ### Sample MaaS Configuration
-#  maas:
-#    region:
-#      subnets:
-#        deploy_network:
-#          cidr: 172.17.44.0/24
-#          fabric: deploy_network
-#          gateway_ip: 172.17.44.1
-#          iprange:
-#            end: 172.17.44.200
-#            start: 172.17.44.92
-#      fabrics:
-#        deploy_network:
-#          description: Fabric for deploy_network
-#      machines:
-#        kvm02:
-#          interface:
-#            mac: 00:25:90:eb:92:4a
-#          power_parameters:
-#            power_address: ipmi_ip
-#            power_password: password
-#            power_type: ipmi
-#            power_user: engineer
+  maas:
+    region:
+      subnets:
+        deploy_network:
+          cidr: 192.168.10.0/24
+          fabric: deploy_network
+          gateway_ip: 192.168.10.1
+          iprange:
+            end: 192.168.10.200
+            start: 192.168.10.90
+      fabrics:
+        deploy_network:
+          description: Fabric for deploy_network
+      machines:
+        kvm01:
+          interface:
+            mac: A4:BF:01:1B:C5:62
+          power_parameters:
+            power_address: 172.16.97.41
+            power_password: intelnfv
+            power_type: ipmi
+            power_user: root
+        kvm02:
+          interface:
+            mac: A4:BF:01:19:8C:3E
+          power_parameters:
+            power_address: 172.16.97.42
+            power_password: intelnfv
+            power_type: ipmi
+            power_user: root
+        kvm03:
+          interface:
+            mac: A4:BF:01:1B:CA:A9
+          power_parameters:
+            power_address: 172.16.97.43
+            power_password: intelnfv
+            power_type: ipmi
+            power_user: root
+        gtw01:
+          interface:
+            mac: A4:BF:01:1C:72:C0
+          power_parameters:
+            power_address: 172.16.97.44
+            power_password: intelnfv
+            power_type: ipmi
+            power_user: root
+
+

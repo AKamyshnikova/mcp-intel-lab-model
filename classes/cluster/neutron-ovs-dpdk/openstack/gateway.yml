@@ -13,8 +13,8 @@ parameters:
     linux_system_codename: xenial
     keepalived_vip_interface: br-ctl
     keepalived_vip_virtual_router_id: 69
-    primary_first_nic: eth1
-    primary_second_nic: eth2
+    primary_first_nic: eno1
+    primary_second_nic: eno2
   linux:
     network:
       bridge: openvswitch
@@ -45,14 +45,32 @@ parameters:
         br-floating:
           enabled: true
           type: ovs_bridge
-        br-ctl:
+        bond0.1:
+          name: bond0.${_param:control_vlan}
+          enabled: true
+          proto: manual
+          type: vlan
+          use_interfaces:
+          - bond0
+        br-ex:
+          enabled: true
+          proto: static
+          address: ${_param:public_network} # ???
+          netmask: ${_param:control_network_netmask}
+          use_interfaces:
+          - bond0.${_param:public_vlan}
+        ex-to-floating:
           enabled: true
           type: ovs_port
+          port_type: patch
+          bridge: br-ex
+          peer: floating-to-ex
+        floating-to-ex:
+          enabled: true
+          type: ovs_port
+          port_type: patch
           bridge: br-floating
-          proto: static
-          ovs_options: tag=${_param:control_vlan}
-          address: ${_param:single_address}
-          netmask: ${_param:control_network_netmask}
+          peer: ex-to-floating
         br-prv:
           enabled: true
           type: ovs_bridge
