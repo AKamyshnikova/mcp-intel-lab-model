@@ -6,15 +6,12 @@ classes:
 - system.reclass.storage.salt
 parameters:
   _param:
-    reclass_data_repository: "https://github.com/salt-formulas/openstack-salt.git"
     reclass_data_revision: master
-    salt_formula_branch: master
-    reclass_config_master: localhost
-    single_address: localhost
-    salt_master_host: localhost
-    salt_master_base_environment: prd
+    reclass_data_repository: "https://github.com/AKamyshnikova/mcp-intel-lab-model.git"
     linux_system_codename: xenial
+    salt_master_host: 192.168.20.15
+
   linux:
     system:
       name: cfg01.neutron-ovs-dpdk.local.yaml
-      domain: bootstrap.local
+      domain: neutron-ovs-dpdk.local
