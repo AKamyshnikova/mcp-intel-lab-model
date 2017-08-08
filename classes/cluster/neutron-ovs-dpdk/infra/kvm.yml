@@ -21,8 +21,8 @@ parameters:
     cluster_node03_address: ${_param:infra_kvm_node03_address}
     keepalived_vip_interface: br_ctl
     keepalived_vip_virtual_router_id: 69
-    deploy_nic: eno1
-    primary_first_nic: eno2
+    primary_first_nic: eno1
+    primary_second_nic: eno2
   salt:
     control:
       size: #RAM 4096,8192,16384,32768,65536
@@ -102,13 +102,13 @@ parameters:
   linux:
     network:
       interface:
-        eth0:
+        eno0:
           enabled: true
           type: slave
           proto: manual
-          name: ${_param:deploy_nic}
+          name: ${_param:primary_first_nic}
           master: bond0
-        eth1:
+        eno1:
           enabled: true
           type: slave
           proto: manual

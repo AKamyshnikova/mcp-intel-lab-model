@@ -19,13 +19,13 @@ parameters:
     network:
       bridge: openvswitch
       interface:
-        eth1:
+        eno1:
           enabled: true
           type: slave
           proto: manual
           name: ${_param:primary_first_nic}
           master: bond0
-        eth2:
+        eno2:
           enabled: true
           type: slave
           proto: manual
@@ -34,8 +34,6 @@ parameters:
         bond0:
           enabled: true
           proto: manual
-          ovs_bridge: br-floating
-          ovs_type: OVSPort
           type: bond
           use_interfaces:
           - ${_param:primary_first_nic}
@@ -45,8 +43,15 @@ parameters:
         br-floating:
           enabled: true
           type: ovs_bridge
-        bond0.1:
+        bond0.102:
           name: bond0.${_param:control_vlan}
+          enabled: true
+          proto: manual
+          type: vlan
+          use_interfaces:
+          - bond0
+        bond0.103:
+          name: bond0.${_param:public_vlan}
           enabled: true
           proto: manual
           type: vlan
@@ -55,7 +60,6 @@ parameters:
         br-ex:
           enabled: true
           proto: static
-          address: ${_param:public_network} # ???
           netmask: ${_param:control_network_netmask}
           use_interfaces:
           - bond0.${_param:public_vlan}

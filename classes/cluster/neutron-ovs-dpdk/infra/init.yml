@@ -12,27 +12,27 @@ parameters:
     infra_config_hostname: cfg01
     salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
     # infra service addresses
-    infra_config_address: 192.168.20.15
-    infra_config_deploy_address: 192.168.20.15
+    infra_config_address: 192.168.10.15
+    infra_config_deploy_address: 192.168.10.15
 
     cluster_domain: neutron-ovs-dpdk.local
     cluster_name: neutron-ovs-dpdk
     cluster_public_host: ${_param:openstack_proxy_address}
 
     # MaaS parameters
-    infra_maas_node01_deploy_address: 192.168.20.91
+    infra_maas_node01_deploy_address: 192.168.10.91
     infra_maas_node01_hostname: mas01
     maas_admin_username: mirantis
     maas_admin_password: YrbGQJbs0bIE46Kw
     maas_db_password: REPLACE_BY_GENERATED_VALUE_DURING_INSTALL
 
-    infra_kvm_address: 192.168.20.240
-    infra_kvm_node01_address: 192.168.10.241
-    infra_kvm_node02_address: 192.168.10.242
-    infra_kvm_node03_address: 192.168.10.243
-    infra_kvm_node01_deploy_address: 192.168.20.241
-    infra_kvm_node02_deploy_address: 192.168.20.242
-    infra_kvm_node03_deploy_address: 192.168.20.243
+    infra_kvm_address: 192.168.10.240
+    infra_kvm_node01_address: 192.168.20.241
+    infra_kvm_node02_address: 192.168.20.242
+    infra_kvm_node03_address: 192.168.20.243
+    infra_kvm_node01_deploy_address: 192.168.10.241
+    infra_kvm_node02_deploy_address: 192.168.10.242
+    infra_kvm_node03_deploy_address: 192.168.10.243
     infra_kvm_node01_hostname: kvm01
     infra_kvm_node02_hostname: kvm02
     infra_kvm_node03_hostname: kvm03
@@ -43,16 +43,20 @@ parameters:
 
     control_network_netmask: 255.255.255.0
     tenant_network_netmask: 255.255.255.0
-    control_vlan: 101
-    tenant_vlan: 20
+    control_vlan: 102
+
 
     dns_server01: 8.8.8.8
     dns_server02: 8.8.4.4
     deploy_network_netmask: 255.255.255.0
-    deploy_network_gateway: 192.168.20.1
+    deploy_network_gateway: 192.168.10.1
 
     public_network: 172.16.98.0/24
     public_vlan: 103
+    # public node addresses 172.16.98.2-172.16.98.20
+    public_gtw01_address: 172.16.98.2
+    public_gtw02_address: 172.16.98.3
+    public_gtw02_address: 172.16.98.4
 
     linux_dhcp_interface:
       enabled: true
