@@ -30,38 +30,38 @@ parameters:
       fabrics:
         deploy_network:
           description: Fabric for deploy_network
-      machines:
-        kvm01:
-          interface:
-            mac: A4:BF:01:1B:C5:62
-          power_parameters:
-            power_address: 172.16.97.41
-            power_password: intelnfv
-            power_type: ipmi
-            power_user: root
-        kvm02:
-          interface:
-            mac: A4:BF:01:19:8C:3E
-          power_parameters:
-            power_address: 172.16.97.42
-            power_password: intelnfv
-            power_type: ipmi
-            power_user: root
-        kvm03:
-          interface:
-            mac: A4:BF:01:1B:CA:A9
-          power_parameters:
-            power_address: 172.16.97.43
-            power_password: intelnfv
-            power_type: ipmi
-            power_user: root
-        gtw01:
-          interface:
-            mac: A4:BF:01:1C:72:C0
-          power_parameters:
-            power_address: 172.16.97.44
-            power_password: intelnfv
-            power_type: ipmi
-            power_user: root
+#      machines:
+#        kvm01:
+#          interface:
+#            mac: A4:BF:01:1B:C5:60
+#          power_parameters:
+#            power_address: 172.16.97.41
+#            power_password: intelnfv
+#            power_type: ipmi
+#            power_user: root
+#        kvm02:
+#          interface:
+#            mac: A4:BF:01:19:8C:3C
+#          power_parameters:
+#            power_address: 172.16.97.42
+#            power_password: intelnfv
+#            power_type: ipmi
+#            power_user: root
+#        kvm03:
+#          interface:
+#            mac: A4:BF:01:1B:CA:A7
+#          power_parameters:
+#            power_address: 172.16.97.43
+#            power_password: intelnfv
+#            power_type: ipmi
+#            power_user: root
+#        gtw01:
+#          interface:
+#            mac: A4:BF:01:1C:72:BE
+#          power_parameters:
+#            power_address: 172.16.97.44
+#            power_password: intelnfv
+#            power_type: ipmi
+#            power_user: root
 
 
