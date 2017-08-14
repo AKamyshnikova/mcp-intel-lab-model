@@ -7,7 +7,7 @@ parameters:
       interface:
         primary_interface:
           enabled: true
-          name: ens2
+          name: ens3
           type: eth
           proto: static
           netmask: ${_param:deploy_network_netmask}
@@ -17,19 +17,19 @@ parameters:
           - ${_param:dns_server01}
           - ${_param:dns_server02}
 ### Sample MaaS Configuration
-  maas:
-    region:
-      subnets:
-        deploy_network:
-          cidr: 192.168.10.0/24
-          fabric: deploy_network
-          gateway_ip: 192.168.10.1
-          iprange:
-            end: 192.168.10.200
-            start: 192.168.10.90
-      fabrics:
-        deploy_network:
-          description: Fabric for deploy_network
+#  maas:
+#    region:
+#      subnets:
+#        deploy_network:
+#          cidr: 192.168.10.0/24
+#          fabric: deploy_network
+#          gateway_ip: 192.168.10.1
+#          iprange:
+#            end: 192.168.10.200
+#            start: 192.168.10.90
+#      fabrics:
+#        deploy_network:
+#          description: Fabric for deploy_network
 #      machines:
 #        kvm01:
 #          interface:
