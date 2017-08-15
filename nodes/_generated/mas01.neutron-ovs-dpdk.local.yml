@@ -1,0 +1,13 @@
+classes:
+- cluster.neutron-ovs-dpdk.infra.maas
+parameters:
+  _param:
+    linux_system_codename: xenial
+    salt_master_host: 192.168.10.15
+    single_address: 192.168.10.91
+  linux:
+    system:
+      name: mas01
+      domain: neutron-ovs-dpdk.local
+      cluster: default
+      environment: prd

@@ -1,0 +1,23 @@
+classes:
+- cluster.neutron-ovs-dpdk.openstack.compute.dpdk
+parameters:
+  _param:
+    compute_dpdk_driver: uio
+    compute_ovs_dpdk_lcore_mask: 0x400
+    compute_ovs_dpdk_socket_mem: 1024
+    compute_ovs_memory_channels: 2
+    compute_ovs_pmd_cpu_mask: 0x6
+    dpdk0_name: enp5s0f1
+    dpdk0_pci: "0000:05:00.1"
+    dpdk1_name: enp5s0f2
+    dpdk1_pci: "0000:05:00.2"
+    linux_system_codename: xenial
+    salt_master_host: 192.168.10.15
+    single_address: '192.168.0.20.103'
+    tenant_address: '10.0.2.103'
+  linux:
+    system:
+      name: cmp003
+      domain: neutron-ovs-dpdk.local
+      cluster: default
+      environment: prd

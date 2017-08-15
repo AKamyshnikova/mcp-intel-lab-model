@@ -63,5 +63,3 @@ parameters:
 #            power_password: intelnfv
 #            power_type: ipmi
 #            power_user: root
-
-

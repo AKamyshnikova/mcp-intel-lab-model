@@ -1,0 +1,17 @@
+classes:
+- cluster.neutron-ovs-dpdk.infra.kvm
+parameters:
+  _param:
+    deploy_address: 192.168.10.242
+    keepalived_vip_priority: 101
+    linux_system_codename: xenial
+    public_address: 192.168.20.242
+    salt_master_host: 192.168.10.15
+    single_address: 192.168.20.242
+    storage_address: 192.168.20.242
+  linux:
+    system:
+      name: kvm02
+      domain: neutron-ovs-dpdk.local
+      cluster: default
+      environment: prd

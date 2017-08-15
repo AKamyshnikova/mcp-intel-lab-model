@@ -12,6 +12,7 @@ classes:
 - system.glusterfs.server.volume.keystone
 - system.salt.control.cluster.openstack_control_cluster
 - system.salt.control.cluster.openstack_database_cluster
+- system.salt.control.cluster.infra_maas_single
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
@@ -89,7 +90,7 @@ parameters:
             dbs01:
               image: ${_param:salt_control_xenial_image}
             dbs02:
-              image: ${_param:salt_control_xenial_image}
+             image: ${_param:salt_control_xenial_image}
             dbs03:
               image: ${_param:salt_control_xenial_image}
   virt:
@@ -125,7 +126,7 @@ parameters:
           - ${_param:dns_server01}
           - ${_param:dns_server02}
           use_interfaces:
-          - ${_param:deploy_nic}
+          - bond0
         bond0:
           enabled: true
           proto: manual
@@ -134,7 +135,7 @@ parameters:
           - ${_param:primary_first_nic}
           - ${_param:primary_second_nic}
           slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: active-backup
+          mode: 802.3ad
         bond0.1:
           name: bond0.${_param:control_vlan}
           enabled: true

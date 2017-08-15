@@ -24,7 +24,8 @@ parameters:
     infra_maas_node01_hostname: mas01
     maas_admin_username: mirantis
     maas_admin_password: YrbGQJbs0bIE46Kw
-    maas_db_password: REPLACE_BY_GENERATED_VALUE_DURING_INSTALL
+    maas_db_password: aIvTzUhCbROp
+    maas_url: http://172.16.98.5:5240/MAAS
 
     infra_kvm_address: 192.168.10.240
     infra_kvm_node01_address: 192.168.20.241
@@ -49,7 +50,7 @@ parameters:
     dns_server01: 8.8.8.8
     dns_server02: 8.8.4.4
     deploy_network_netmask: 255.255.255.0
-    deploy_network_gateway: 192.168.10.1
+    deploy_network_gateway: 192.168.10.91
 
     public_network: 172.16.98.0/24
     public_vlan: 103
