@@ -66,22 +66,26 @@ parameters:
           params:
             linux_system_codename: xenial
             public_address: 172.16.98.2
-        openstack_gateway_node02:
-          name: gtw02
-          domain: ${_param:cluster_domain}
-          classes:
-          - cluster.${_param:cluster_name}.openstack.gateway
-          params:
-            linux_system_codename: xenial
-            public_address: 172.16.98.3
-        openstack_gateway_node03:
-          name: gtw03
-          domain: ${_param:cluster_domain}
-          classes:
-          - cluster.${_param:cluster_name}.openstack.gateway
-          params:
-            linux_system_codename: xenial
-            public_address: 172.16.98.4
+            single_address: 192.168.20.224
+            tenant_address: 10.0.2.6
+            deploy_address: 192.168.10.224
+            salt_master_host: 192.168.10.15
+        #openstack_gateway_node02:
+        #  name: gtw02
+        #  domain: ${_param:cluster_domain}
+        #  classes:
+        #  - cluster.${_param:cluster_name}.openstack.gateway
+        #  params:
+        #    linux_system_codename: xenial
+        #    public_address: 172.16.98.3
+        #openstack_gateway_node03:
+        #  name: gtw03
+        #  domain: ${_param:cluster_domain}
+        #  classes:
+        #  - cluster.${_param:cluster_name}.openstack.gateway
+        #  params:
+        #    linux_system_codename: xenial
+        #    public_address: 172.16.98.4
         openstack_compute_rack01:
           name: ${_param:openstack_compute_rack01_hostname}<<count>>
           domain: ${_param:cluster_domain}
