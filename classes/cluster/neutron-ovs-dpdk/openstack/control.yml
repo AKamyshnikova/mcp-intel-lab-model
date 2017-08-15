@@ -38,3 +38,4 @@ parameters:
     network:
       interface:
         ens3: ${_param:linux_single_interface}
+        ens2: ${_param:linux_dhcp_interface}

@@ -63,15 +63,17 @@ parameters:
       enabled: true
       type: eth
       proto: dhcp
+      gateway:
+      name_servers: ${_param:deploy_network_gateway}
+        - ${_param:dns_server01}
+        - ${_param:dns_server02}
     linux_single_interface:
       enabled: true
       type: eth
       proto: static
       address: ${_param:single_address}
       netmask: ${_param:control_network_netmask}
-      name_servers:
-        - ${_param:dns_server01}
-        - ${_param:dns_server02}
+
 
   salt:
     minion:
