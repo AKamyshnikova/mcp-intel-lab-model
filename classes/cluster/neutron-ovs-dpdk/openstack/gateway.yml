@@ -43,6 +43,7 @@ parameters:
         br_mgm:
           enabled: true
           proto: static
+          type: bridge
           address: ${_param:deploy_address}
           netmask: ${_param:deploy_network_netmask}
           use_interfaces:
@@ -57,6 +58,7 @@ parameters:
         br_ctl:
           enabled: true
           proto: static
+          type: bridge
           address: ${_param:single_address}
           netmask: ${_param:control_network_netmask}
           use_interfaces:
@@ -71,8 +73,10 @@ parameters:
         br_ex:
           enabled: true
           proto: static
+          type: bridge
           address: ${_param:public_address}
           netmask: ${_param:public_network_netmask}
+          gateway: ${_param:public_network_gateway}
           use_interfaces:
           - bond0.${_param:public_vlan}
           use_ovs_ports:
@@ -83,7 +87,6 @@ parameters:
         float-to-ex:
           enabled: true
           type: ovs_port
-          port_type: patch
           bridge: br-floating
         ens801f0:
           enabled: true
@@ -109,6 +112,7 @@ parameters:
         br_ten:
           enabled: true
           proto: static
+          type: bridge
           use_interfaces:
           - bond1
           use_ovs_ports:
@@ -119,5 +123,4 @@ parameters:
         prv-to-tenant:
           enabled: true
           type: ovs_port
-          port_type: patch
           bridge: br-prv
