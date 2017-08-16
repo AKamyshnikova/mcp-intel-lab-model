@@ -54,6 +54,7 @@ parameters:
 
     public_network: 172.16.98.0/24
     public_network_netmask: 255.255.255.0
+    public_network_gateway: 172.16.98.1
     public_vlan: 103
     # public node addresses 172.16.98.2-172.16.98.20
     public_gtw01_address: 172.16.98.2
