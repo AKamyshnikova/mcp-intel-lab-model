@@ -43,9 +43,9 @@ parameters:
     glusterfs_node03_address: ${_param:infra_kvm_node03_address}
 
     control_network_netmask: 255.255.255.0
-    tenant_network_netmask: 255.255.255.0
     control_vlan: 102
 
+    tenant_network_netmask: 255.255.255.0
 
     dns_server01: 8.8.8.8
     dns_server02: 8.8.4.4
@@ -53,6 +53,7 @@ parameters:
     deploy_network_gateway: 192.168.10.91
 
     public_network: 172.16.98.0/24
+    public_network_netmask: 255.255.255.0
     public_vlan: 103
     # public node addresses 172.16.98.2-172.16.98.20
     public_gtw01_address: 172.16.98.2
