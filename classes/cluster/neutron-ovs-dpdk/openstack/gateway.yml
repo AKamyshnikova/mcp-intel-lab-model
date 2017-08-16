@@ -7,14 +7,13 @@ classes:
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
-    interface_mtu: 9000
-    cluster_vip_address: ${_param:openstack_control_address}
-
     linux_system_codename: xenial
     keepalived_vip_interface: br-ctl
     keepalived_vip_virtual_router_id: 69
     primary_first_nic: eno1
     primary_second_nic: eno2
+    tenant_first_nic: ens801f0
+    tenant_second_nic: ens801f1
   linux:
     network:
       bridge: openvswitch
@@ -39,10 +38,14 @@ parameters:
           - ${_param:primary_first_nic}
           - ${_param:primary_second_nic}
           slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: active-backup
-        br-floating:
+          mode: 802.3ad
+        br_mgm:
           enabled: true
-          type: ovs_bridge
+          proto: static
+          address: ${_param:deploy_address}
+          netmask: ${_param:deploy_network_netmask}
+          use_interfaces:
+          - bond0
         bond0.102:
           name: bond0.${_param:control_vlan}
           enabled: true
@@ -50,6 +53,13 @@ parameters:
           type: vlan
           use_interfaces:
           - bond0
+        br_ctl:
+          enabled: true
+          proto: static
+          address: ${_param:single_address}
+          netmask: ${_param:control_network_netmask}
+          use_interfaces:
+          - bond0.${_param:control_vlan}
         bond0.103:
           name: bond0.${_param:public_vlan}
           enabled: true
@@ -57,36 +67,56 @@ parameters:
           type: vlan
           use_interfaces:
           - bond0
-        br-ex:
+        br_ex:
           enabled: true
           proto: static
-          netmask: ${_param:control_network_netmask}
+          address: ${_param:public_address}
+          netmask: ${_param:public_network_netmask}
           use_interfaces:
           - bond0.${_param:public_vlan}
-        ex-to-floating:
+          use_ovs_ports:
+          - float-to-ex
+        br-floating:
           enabled: true
-          type: ovs_port
-          port_type: patch
-          bridge: br-ex
-          peer: floating-to-ex
-        floating-to-ex:
+          type: ovs_bridge
+        float-to-ex:
           enabled: true
           type: ovs_port
           port_type: patch
           bridge: br-floating
-          peer: ex-to-floating
+        ens801f0:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:tenant_first_nic}
+          master: bond1
+        ens801f1:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:tenant_second_nic}
+          master: bond1
+        bond1:
+          enabled: true
+          proto: manual
+          type: bond
+          use_interfaces:
+          - ${_param:tenant_first_nic}
+          - ${_param:tenant_second_nic}
+          slaves: ${_param:tenant_first_nic} ${_param:tenant_second_nic}
+          mode: 802.3ad
+        br_ten:
+          enabled: true
+          proto: static
+          use_interfaces:
+          - bond1
+          use_ovs_ports:
+          - prv-to-tenant
         br-prv:
           enabled: true
           type: ovs_bridge
-        floating-to-prv:
-          enabled: true
-          type: ovs_port
-          port_type: patch
-          bridge: br-floating
-          peer: prv-to-floating
-        prv-to-floating:
+        prv-to-tenant:
           enabled: true
           type: ovs_port
           port_type: patch
           bridge: br-prv
-          peer: floating-to-prv

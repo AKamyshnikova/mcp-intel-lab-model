@@ -23,7 +23,7 @@ parameters:
     compute_ovs_dpdk_lcore_mask: "0x400"
     compute_ovs_memory_channels: "2"
     neutron_tenant_network_types: "flat,vlan" # nondvr + dpdk
-    neutron_tenant_vlan_range: 2416:2420
+    neutron_tenant_vlan_range: 1:4000
     compute_hugepages_size: 1G
     nova_cpu_pinning: 1,2,3,4,5,7,8,9,10,11
     compute_hugepages_count: 16
@@ -119,7 +119,7 @@ parameters:
     openstack_gateway_node03_tenant_address: 10.0.2.8
 
     # OpenStack Compute
-    openstack_compute_rack01_single_subnet: 192.168.0.20
+    openstack_compute_rack01_single_subnet: 192.168.20
     openstack_compute_rack01_tenant_subnet: 10.0.2
     openstack_compute_rack01_hostname: cmp
 
