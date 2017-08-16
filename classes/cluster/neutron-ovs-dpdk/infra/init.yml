@@ -64,8 +64,8 @@ parameters:
       enabled: true
       type: eth
       proto: dhcp
-      gateway:
-      name_servers: ${_param:deploy_network_gateway}
+      gateway: ${_param:deploy_network_gateway}
+      name_servers:
         - ${_param:dns_server01}
         - ${_param:dns_server02}
     linux_single_interface:
