@@ -20,6 +20,8 @@ classes:
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.glance
 - system.glusterfs.client.volume.keystone
+- system.rabbitmq.server.cluster
+- system.rabbitmq.server.vhost.openstack
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
