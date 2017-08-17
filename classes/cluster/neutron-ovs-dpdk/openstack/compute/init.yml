@@ -92,6 +92,7 @@ parameters:
           type: bridge
           address: ${_param:deploy_address}
           netmask: ${_param:deploy_network_netmask}
+          gateway: ${_param:deploy_network_gateway}
           use_interfaces:
           - bond0
         bond0.102:
