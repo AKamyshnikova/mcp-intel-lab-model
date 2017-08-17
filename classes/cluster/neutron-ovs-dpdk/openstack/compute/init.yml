@@ -23,20 +23,12 @@ parameters:
     primary_first_nic: eno1
     primary_second_nic: eno2
     linux_system_codename: xenial
-    dpdk0_name: enp5s0f1
-    dpdk1_name: enp5s0f2
-    dpdk0_pci: '"0000:05:00.1"'
-    dpdk1_pci: '"0000:05:00.2"'
-    compute_dpdk_driver: uio
-    compute_ovs_pmd_cpu_mask: ${_param:compute_ovs_pmd_cpu_mask}
-    compute_ovs_dpdk_socket_mem: ${_param:compute_ovs_dpdk_socket_mem}
-    compute_ovs_dpdk_lcore_mask: ${_param:compute_ovs_dpdk_lcore_mask}
-    compute_ovs_memory_channels: "2"
 
   neutron:
     compute:
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
+      security_groups_enabled: false
 
   linux:
     network:
@@ -50,21 +42,21 @@ parameters:
         dpdk0:
           name: ${_param:dpdk0_name}
           pci: ${_param:dpdk0_pci}
-          driver: igb_uio
+          driver: vfio-pci
           bond: dpdkbond1
           enabled: true
           type: dpdk_ovs_port
-          n_rxq: "4"
-          pmd_rxq_affinity: "0:11,1:31,2:12,3:32"
+          n_rxq: "10"
+          pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
         dpdk1:
           name: ${_param:dpdk1_name}
           pci: ${_param:dpdk1_pci}
-          driver: igb_uio
+          driver: vfio-pci
           bond: dpdkbond1
           enabled: true
           type: dpdk_ovs_port
-          n_rxq: "9"
-          pmd_rxq_affinity: "0:11,1:31,2:12,3:32,4:13,5:33,6:14,7:34,8:10"
+          n_rxq: "10"
+          pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
         dpdkbond1:
           enabled: true
           bridge: br-prv
@@ -73,21 +65,42 @@ parameters:
         br-prv:
           enabled: true
           type: dpdk_ovs_bridge
-        deploy_nic.1806:
-          name: ${_param:primary_first_nic}.1806
+        eno1:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:primary_first_nic}
+          master: bond0
+        eno2:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:primary_second_nic}
+          master: bond0
+        bond0:
+          enabled: true
+          proto: manual
+          type: bond
+          use_interfaces:
+          - ${_param:primary_first_nic}
+          - ${_param:primary_second_nic}
+          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
+          mode: 802.3ad
+        bond0.102:
+          name: bond0.${_param:control_vlan}
           enabled: true
           proto: manual
           type: vlan
           use_interfaces:
-          - ${_param:primary_first_nic}
+          - bond0
         br_ctl:
           enabled: true
-          type: bridge
           proto: static
+          type: bridge
           address: ${_param:single_address}
-          netmask: 255.255.255.0
+          netmask: ${_param:control_network_netmask}
           use_interfaces:
-          - ${_param:primary_first_nic}.1806
+          - bond0.${_param:control_vlan}
       openvswitch:
         pmd_cpu_mask: "${_param:compute_ovs_pmd_cpu_mask}"
         dpdk_socket_mem: "${_param:compute_ovs_dpdk_socket_mem}"

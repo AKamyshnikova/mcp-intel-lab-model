@@ -111,12 +111,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
-            dpdk0_name: enp5s0f1
-            dpdk1_name: enp5s0f2
-            dpdk0_pci: '"0000:05:00.1"'
-            dpdk1_pci: '"0000:05:00.2"'
-            compute_dpdk_driver: uio
-            compute_ovs_pmd_cpu_mask: "0x6"
-            compute_ovs_dpdk_socket_mem: "1024"
-            compute_ovs_dpdk_lcore_mask: "0x400"
-            compute_ovs_memory_channels: "2"
+            dpdk0_name: ens801f0
+            dpdk1_name: ens801f1
+            dpdk0_pci: '"0000:82:00.0"'
+            dpdk1_pci: '"0000:82:00.1"'
