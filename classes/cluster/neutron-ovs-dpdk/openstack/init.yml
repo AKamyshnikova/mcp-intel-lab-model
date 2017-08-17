@@ -120,6 +120,7 @@ parameters:
 
     # OpenStack Compute
     openstack_compute_rack01_single_subnet: 192.168.20
+    openstack_compute_rack01_deploy_subnet: 192.168.10
     openstack_compute_rack01_tenant_subnet: 10.0.2
     openstack_compute_rack01_hostname: cmp
 

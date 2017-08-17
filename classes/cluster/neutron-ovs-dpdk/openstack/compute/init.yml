@@ -86,6 +86,14 @@ parameters:
           - ${_param:primary_second_nic}
           slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
           mode: 802.3ad
+        br_mgm:
+          enabled: true
+          proto: static
+          type: bridge
+          address: ${_param:deploy_address}
+          netmask: ${_param:deploy_network_netmask}
+          use_interfaces:
+          - bond0
         bond0.102:
           name: bond0.${_param:control_vlan}
           enabled: true
