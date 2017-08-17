@@ -102,10 +102,10 @@ parameters:
     openstack_database_node01_address: 192.168.20.51
     openstack_database_node02_address: 192.168.20.52
     openstack_database_node03_address: 192.168.20.53
-    openstack_message_queue_address: 192.168.20.40
-    openstack_message_queue_node01_address: 192.168.20.41
-    openstack_message_queue_node02_address: 192.168.20.42
-    openstack_message_queue_node03_address: 192.168.20.43
+    openstack_message_queue_address: 192.168.20.10
+    openstack_message_queue_node01_address: 192.168.20.11
+    openstack_message_queue_node02_address: 192.168.20.12
+    openstack_message_queue_node03_address: 192.168.20.13
 
     openstack_telemetry_address: 192.168.20.75
     openstack_telemetry_node01_address: 192.168.20.76
