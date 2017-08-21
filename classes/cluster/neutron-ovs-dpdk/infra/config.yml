@@ -144,3 +144,8 @@ parameters:
             dpdk1_name: enp67s0f3
             dpdk0_pci: '"0000:43:00.2"'
             dpdk1_pci: '"0000:43:00.3"'
+            nova_cpu_pinning: 42,43,44,45,46,47,48,49,50,51,52,53,54,55
+            compute_ovs_pmd_cpu_mask: "0x7ffc000"
+            compute_ovs_dpdk_lcore_mask: "0x80000000000"
+            primary_first_nic: enp67s0f0
+            primary_second_nic: enp67s0f1
