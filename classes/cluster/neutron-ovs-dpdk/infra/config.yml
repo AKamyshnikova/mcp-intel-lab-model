@@ -98,7 +98,7 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.openstack.compute.dpdk
           repeat:
-            count: 4
+            count: 2
             start: 1
             digits: 3
             params:
@@ -118,3 +118,29 @@ parameters:
             dpdk1_name: ens801f1
             dpdk0_pci: '"0000:82:00.0"'
             dpdk1_pci: '"0000:82:00.1"'
+        openstack_compute_rack02:
+          name: ${_param:openstack_compute_rack01_hostname}<<count>>
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute.dpdk
+          repeat:
+            count: 2
+            start: 3
+            digits: 3
+            params:
+              single_address:
+                value: ${_param:openstack_compute_rack01_single_subnet}.<<count>>
+                start: 103
+              tenant_address:
+                value: ${_param:openstack_compute_rack01_tenant_subnet}.<<count>>
+                start: 103
+              deploy_address:
+                value: ${_param:openstack_compute_rack01_deploy_subnet}.<<count>>
+                start: 103
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            dpdk0_name: enp67s0f2
+            dpdk1_name: enp67s0f3
+            dpdk0_pci: '"0000:43:00.2"'
+            dpdk1_pci: '"0000:43:00.3"'
