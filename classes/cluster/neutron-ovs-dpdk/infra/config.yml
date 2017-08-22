@@ -120,7 +120,11 @@ parameters:
             dpdk1_pci: '"0000:82:00.1"'
             primary_first_nic: eno1
             primary_second_nic: eno2
+<<<<<<< 64664f2b4cbd058deba22c157bb3d5876eee91a4
             compute_ovs_pmd_cpu_mask: '"0x3ffffc00000"'
+=======
+            compute_ovs_pmd_cpu_mask: "0x3ffffc00000"
+>>>>>>> Fix params for compute nodes
         openstack_compute_rack02:
           name: ${_param:openstack_compute_rack01_hostname}<<count>>
           domain: ${_param:cluster_domain}
