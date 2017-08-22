@@ -20,8 +20,6 @@ parameters:
     cluster_node03_hostname: ${_param:openstack_control_node03_hostname}
     cluster_node03_address: ${_param:openstack_control_node03_address}
     nova_vncproxy_url: https://${_param:cluster_public_host}:6080
-    primary_first_nic: eno1
-    primary_second_nic: eno2
     linux_system_codename: xenial
 
   neutron:
