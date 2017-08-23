@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        alwex:
+          enabled: true
+          name: alwex
+          sudo: true
+          full_name: Aleksandr Shaposhnikov
+          home: /home/alwex
+  openssh:
+    server:
+      enabled: true
+      user:
+        sgudz:
+          enabled: true
+          public_keys:
+          - ${public_keys:alwex}
+          user: ${linux:system:user:alwex}
+  public_keys:
+    alwex:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAA+QZpjjBIMLqQe/qLdvmRHEEfs4Op+wC8pCQ+TlDrl7sSRXB9FZb4fbJ9qQbVOgNT/2LdtGpSJneuCkiJHtBior678obTw53TCT97ap3H44x948mKP4hc3yv+jbHugtjFQCx4Gp1Ey0Dcyv6qPeASLbEmSbHtj8Dp6lJ06nbELMU1n9XMTNvf0dbOKuofoFNQLSunQDndfFHUQsPFwV5V6KUEWFwihW1j62b2YQVs5P5AG9Y84NpEwNzOt0F0lnaEZVwfWQtcNSq3CILTDF8TuH9JemTRaMBMX/F1cmVEotu2D1wbQzbTxKKW5NmZPazKhdoM7zB1JfXGTw==

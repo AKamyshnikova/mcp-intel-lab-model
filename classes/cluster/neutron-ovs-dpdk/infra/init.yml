@@ -4,6 +4,7 @@ classes:
 - system.openssh.server.team.lab
 - system.openssh.server.team.mcp_qa
 - system.openssh.server.team.networking
+- cluster.neutron-ovs-dpdk._team
 - cluster.neutron-ovs-dpdk.openstack
 parameters:
   _param:
