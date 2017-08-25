@@ -121,13 +121,14 @@ parameters:
             primary_first_nic: eno1
             primary_second_nic: eno2
             compute_ovs_pmd_cpu_mask: '"0x3ffffc00000"'
+            nova_pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
         openstack_compute_rack02:
           name: ${_param:openstack_compute_rack01_hostname}<<count>>
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.compute.dpdk
           repeat:
-            count: 2
+            count: 1
             start: 3
             digits: 3
             params:
@@ -151,3 +152,24 @@ parameters:
             compute_ovs_pmd_cpu_mask: '"0x7ffc000"'
             primary_first_nic: enp67s0f0
             primary_second_nic: enp67s0f1
+            nova_pmd_rxq_affinity: "0:14,1:15,2:16,3:17,4:18,5:19,6:20,7:21,8:22,9:23"
+          openstack_compute_node4:
+            name: cmp004
+            domain: ${_param:cluster_domain}
+            classes:
+            - cluster.${_param:cluster_name}.openstack.compute.dpdk
+            params:
+              linux_system_codename: xenial
+              single_address: 192.168.20.104
+              tenant_address: 10.0.2.104
+              deploy_address: 192.168.10.104
+              salt_master_host: 192.168.10.15
+              dpdk0_name: enp24s0f0
+              dpdk1_name: enp24s0f1
+              dpdk0_pci: '"0000:18:00.0"'
+              dpdk1_pci: '"0000:18:00.1"'
+              nova_cpu_pinning: 54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
+              compute_ovs_pmd_cpu_mask: '"0x7ffc000"'
+              primary_first_nic: enp67s0f0
+              primary_second_nic: enp67s0f1
+              nova_pmd_rxq_affinity: "0:18,1:19,2:20,3:21,4:22,5:23,6:24,7:25,8:26,9:27"

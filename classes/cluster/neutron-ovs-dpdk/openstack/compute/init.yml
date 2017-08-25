@@ -45,7 +45,7 @@ parameters:
           enabled: true
           type: dpdk_ovs_port
           n_rxq: "10"
-          pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
+          pmd_rxq_affinity: ${_param:nova_pmd_rxq_affinity}
         dpdk1:
           name: ${_param:dpdk1_name}
           pci: ${_param:dpdk1_pci}
@@ -54,7 +54,7 @@ parameters:
           enabled: true
           type: dpdk_ovs_port
           n_rxq: "10"
-          pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
+          pmd_rxq_affinity: ${_param:nova_pmd_rxq_affinity}
         dpdkbond1:
           enabled: true
           bridge: br-prv
