@@ -75,15 +75,7 @@ parameters:
           proto: manual
           name: ${_param:primary_second_nic}
           master: bond0
-        bond0:
-          enabled: true
-          proto: manual
-          type: bond
-          use_interfaces:
-          - ${_param:primary_first_nic}
-          - ${_param:primary_second_nic}
-          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: 802.3ad
+        bond0: ${_param:compute_bond}
         br_mgm:
           enabled: true
           proto: static

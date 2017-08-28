@@ -122,28 +122,19 @@ parameters:
             primary_second_nic: eno2
             compute_ovs_pmd_cpu_mask: '"0x3ffffc00000"'
             nova_pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
-        openstack_compute_rack02:
+            compute_bond: %{_param:bond_broadwell}
+        openstack_compute_node3:
           name: ${_param:openstack_compute_rack01_hostname}<<count>>
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.compute.dpdk
-          repeat:
-            count: 1
-            start: 3
-            digits: 3
-            params:
-              single_address:
-                value: ${_param:openstack_compute_rack01_single_subnet}.<<count>>
-                start: 103
-              tenant_address:
-                value: ${_param:openstack_compute_rack01_tenant_subnet}.<<count>>
-                start: 103
-              deploy_address:
-                value: ${_param:openstack_compute_rack01_deploy_subnet}.<<count>>
-                start: 103
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
+            single_address: 192.168.20.103
+            tenant_address: 10.0.2.103
+            deploy_address: 192.168.10.103
+            salt_master_host: 192.168.10.15
             dpdk0_name: enp24s0f0
             dpdk1_name: enp24s0f1
             dpdk0_pci: '"0000:18:00.0"'
@@ -154,6 +145,11 @@ parameters:
             primary_first_nic: enp67s0f0
             primary_second_nic: enp67s0f1
             nova_pmd_rxq_affinity: "0:14,1:15,2:16,3:17,4:18,5:19,6:20,7:21,8:22,9:23"
+            primary_third_nic: enp67s0f2
+            primary_forth_nic: enp67s0f3
+            compute_bond: %{_param:bond_purley}
+          linux:
+            network: ${_param:purley_interfaces}
         openstack_compute_node4:
             name: cmp004
             domain: ${_param:cluster_domain}
@@ -175,3 +171,8 @@ parameters:
               primary_first_nic: enp67s0f0
               primary_second_nic: enp67s0f1
               nova_pmd_rxq_affinity: "0:18,1:19,2:20,3:21,4:22,5:23,6:24,7:25,8:26,9:27"
+              primary_third_nic: enp67s0f2
+              primary_forth_nic: enp67s0f3
+              compute_bond: %{_param:bond_purley}
+            linux:
+              network: ${_param:purley_interfaces}
