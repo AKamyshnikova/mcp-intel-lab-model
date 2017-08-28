@@ -1,4 +1,5 @@
 classes:
+- system.neutron.compute.nfv.dpdk
 - system.linux.system.repo.ubuntu
 - system.linux.system.repo.saltstack.xenial
 - system.linux.system.repo.mcp.openstack
@@ -21,6 +22,14 @@ parameters:
     cluster_node03_address: ${_param:openstack_control_node03_address}
     nova_vncproxy_url: https://${_param:cluster_public_host}:6080
     linux_system_codename: xenial
+    dpdk0_name: enp24s0f0
+    dpdk1_name: enp24s0f1
+    dpdk0_pci: "0000:18:00.0"
+    dpdk1_pci: "0000:18:00.1"
+    primary_first_nic: enp67s0f0
+    primary_second_nic: enp67s0f1
+    primary_third_nic: enp67s0f2
+    primary_forth_nic: enp67s0f3
 
   neutron:
     compute:
@@ -75,14 +84,28 @@ parameters:
           proto: manual
           name: ${_param:primary_second_nic}
           master: bond0
+        eno3:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:primary_third_nic}
+          master: bond0
+        eno4:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:primary_forth_nic}
+          master: bond0
         bond0:
           enabled: true
           proto: manual
           type: bond
           use_interfaces:
           - ${_param:primary_first_nic}
-          - ${_param:primary_second_nic  }
-          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
+          - ${_param:primary_second_nic}
+          - ${_param:primary_third_nic}
+          - ${_param:primary_forth_nic}
+          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic} ${_param:primary_third_nic} ${_param:primary_forth_nic}
           mode: 802.3ad
         br_mgm:
           enabled: true
