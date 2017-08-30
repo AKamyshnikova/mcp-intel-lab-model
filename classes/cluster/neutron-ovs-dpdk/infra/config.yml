@@ -121,7 +121,7 @@ parameters:
             primary_first_nic: eno1
             primary_second_nic: eno2
             compute_ovs_dpdk_lcore_mask: "0x80000000000"
-            compute_ovs_pmd_cpu_mask: '"0x3ffffc00000"'
+            compute_ovs_pmd_cpu_mask: '"0x7ffffc00000"'
             compute_ovs_pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
         openstack_compute_node3:
           name: cmp003
@@ -135,10 +135,10 @@ parameters:
             tenant_address: 10.0.2.103
             deploy_address: 192.168.10.103
             salt_master_host: 192.168.10.15
-            nova_cpu_pinning: 42,43,44,45,46,47,48,49,50,51,52,53,54,55
-            compute_ovs_pmd_cpu_mask: '"0x7ffc000"'
-            compute_ovs_dpdk_lcore_mask: "'0x8000000'"
-            compute_ovs_pmd_rxq_affinity: "0:14,1:15,2:16,3:17,4:18,5:19,6:20,7:21,8:22,9:23"
+            nova_cpu_pinning: 32,33,34,35,36,37,38,39,40,41
+            compute_ovs_pmd_cpu_mask: '"0x30003fff"'
+            compute_ovs_dpdk_lcore_mask: "'0x80000000'"
+            compute_ovs_pmd_rxq_affinity: "0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7"
         openstack_compute_node4:
             name: cmp004
             domain: ${_param:cluster_domain}
@@ -150,7 +150,7 @@ parameters:
               tenant_address: 10.0.2.104
               deploy_address: 192.168.10.104
               salt_master_host: 192.168.10.15
-              nova_cpu_pinning: 54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71
-              compute_ovs_pmd_cpu_mask: '"0x3fffc0000"'
-              compute_ovs_dpdk_lcore_mask: "'0x800000000'"
-              compute_ovs_pmd_rxq_affinity: "0:18,1:19,2:20,3:21,4:22,5:23,6:24,7:25,8:26,9:27"
+              nova_cpu_pinning: 36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53
+              compute_ovs_pmd_cpu_mask: '"0xffff"'
+              compute_ovs_dpdk_lcore_mask: "'0x20000'"
+              compute_ovs_pmd_rxq_affinity: "0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7"
