@@ -35,7 +35,7 @@ parameters:
     compute:
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
-      security_groups_enabled: false
+        security_groups_enabled: false
 
   linux:
     network:
@@ -54,7 +54,7 @@ parameters:
           enabled: true
           type: dpdk_ovs_port
           n_rxq: "10"
-          pmd_rxq_affinity: ${_param:nova_pmd_rxq_affinity}
+          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
         dpdk1:
           name: ${_param:dpdk1_name}
           pci: ${_param:dpdk1_pci}
@@ -63,7 +63,7 @@ parameters:
           enabled: true
           type: dpdk_ovs_port
           n_rxq: "10"
-          pmd_rxq_affinity: ${_param:nova_pmd_rxq_affinity}
+          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
         dpdkbond1:
           enabled: true
           bridge: br-prv
@@ -113,7 +113,7 @@ parameters:
           type: bridge
           address: ${_param:deploy_address}
           netmask: ${_param:deploy_network_netmask}
-          gateway: ${_param:deploy_network_gateway}
+#          gateway: ${_param:deploy_network_gateway}
           use_interfaces:
           - bond0
         bond0.102:
