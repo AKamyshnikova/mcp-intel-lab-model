@@ -23,7 +23,7 @@ parameters:
     neutron_tenant_network_types: "flat,vlan" # nondvr + dpdk
     neutron_tenant_vlan_range: 100:200
     compute_hugepages_size: 1G
-    compute_hugepages_count: 16
+    compute_hugepages_count: 48
     compute_hugepages_mount: /mnt/hugepages_1G
     # This range for Broadwell compute nodes
     nova_cpu_pinning: 66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87
