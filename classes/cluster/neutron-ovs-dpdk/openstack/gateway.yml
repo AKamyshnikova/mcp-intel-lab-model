@@ -121,6 +121,9 @@ parameters:
           enabled: true
           type: ovs_port
           bridge: br-floating
+          proto: static
+          address: ${_param:tenant_address}
+          netmask: ${_param:tenant_network_netmask}
 #          proto: static
 #          ovs_options: tag=${_param:tenant_vlan}
 #          address: ${_param:tenant_address}
