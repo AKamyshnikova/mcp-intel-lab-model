@@ -35,7 +35,7 @@ parameters:
     compute:
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
-        security_groups_enabled: false
+      security_groups_enabled: false
 
   linux:
     network:
@@ -51,6 +51,7 @@ parameters:
           pci: ${_param:dpdk0_pci}
           driver: vfio-pci
           bond: dpdkbond1
+          #bridge: br-prv
           enabled: true
           type: dpdk_ovs_port
           n_rxq: "6"

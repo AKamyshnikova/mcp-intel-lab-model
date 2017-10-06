@@ -120,9 +120,16 @@ parameters:
             dpdk1_pci: '"0000:82:00.1"'
             primary_first_nic: eno1
             primary_second_nic: eno2
-            compute_ovs_dpdk_lcore_mask: "0x80000000000"
-            compute_ovs_pmd_cpu_mask: '"0x7ffffc00000"'
-            compute_ovs_pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27,6:28,7:29,8:30,9:31"
+            #compute_ovs_dpdk_lcore_mask: '"0x80000000000"'
+            # Sep cores 1 NUMA
+            compute_ovs_pmd_rxq_affinity: "0:22,1:66,2:23,3:67,4:24,5:68"
+            compute_ovs_pmd_cpu_mask: '"0xfc000000000fc00000"'
+            #compute_ovs_pmd_cpu_mask: '"0x1ffffc00000"'
+            # Shared cores 1 NUMA
+            #compute_ovs_pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27"
+            compute_ovs_dpdk_lcore_mask: '"0x10000000"'
+            # Shared cores 2 NUMA
+            #compute_ovs_pmd_cpu_mask: '"0x7f0000000000000fc00000"'
         openstack_compute_node3:
           name: cmp003
           domain: ${_param:cluster_domain}
@@ -135,7 +142,7 @@ parameters:
             tenant_address: 10.0.2.103
             deploy_address: 192.168.10.103
             salt_master_host: 192.168.10.15
-            nova_cpu_pinning: 28,29,30,31,32,33,34,35,36,37,38,39,40,41
+            nova_cpu_pinning: 7,35,8,36,9,37,10,38,11,39,12,40,13,41
             compute_ovs_pmd_cpu_mask: '"0x1fff"'
             compute_ovs_dpdk_lcore_mask: "'0x2000'"
             compute_ovs_pmd_rxq_affinity: "0:0,1:1,2:2,3:3,4:4,5:5"
@@ -150,7 +157,7 @@ parameters:
               tenant_address: 10.0.2.104
               deploy_address: 192.168.10.104
               salt_master_host: 192.168.10.15
-              nova_cpu_pinning: 36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53
-              compute_ovs_pmd_cpu_mask: '"0x1ffff"'
+              nova_cpu_pinning: 9,45,10,46,11,47,12,48,13,49,14,50,15,51,16,52,17,53
+              compute_ovs_pmd_cpu_mask: '"0x1fff"'
               compute_ovs_dpdk_lcore_mask: "'0x20000'"
               compute_ovs_pmd_rxq_affinity: "0:0,1:1,2:2,3:3,4:4,5:5"

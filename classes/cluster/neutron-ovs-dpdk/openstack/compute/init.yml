@@ -41,19 +41,22 @@ parameters:
           name: ${_param:dpdk0_name}
           pci: ${_param:dpdk0_pci}
           driver: vfio-pci
+          #driver: igb_uio
           bond: dpdkbond1
+          #bridge: br-prv
           enabled: true
           type: dpdk_ovs_port
-          n_rxq: "10"
+          n_rxq: "6"
           pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
         dpdk1:
           name: ${_param:dpdk1_name}
           pci: ${_param:dpdk1_pci}
           driver: vfio-pci
+          #driver: igb_uio
           bond: dpdkbond1
           enabled: true
           type: dpdk_ovs_port
-          n_rxq: "10"
+          n_rxq: "6"
           pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
         dpdkbond1:
           enabled: true
