@@ -113,17 +113,10 @@ parameters:
           enabled: true
           proto: static
           type: bridge
-          use_interfaces:
-          - bond1
-          use_ovs_ports:
-          - br-mesh
-        br-mesh:
-          enabled: true
-          type: ovs_port
-          bridge: br-floating
-          proto: static
           address: ${_param:tenant_address}
           netmask: ${_param:tenant_network_netmask}
+          use_interfaces:
+          - bond1
 #          proto: static
 #          ovs_options: tag=${_param:tenant_vlan}
 #          address: ${_param:tenant_address}
