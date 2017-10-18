@@ -111,7 +111,7 @@ parameters:
           mode: 802.3ad
         br_ten:
           enabled: true
-          proto: static
+          proto: manual
           type: bridge
           use_interfaces:
           - bond1

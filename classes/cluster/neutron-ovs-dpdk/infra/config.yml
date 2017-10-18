@@ -122,14 +122,18 @@ parameters:
             primary_second_nic: eno2
             #compute_ovs_dpdk_lcore_mask: '"0x80000000000"'
             # Sep cores 1 NUMA
-            compute_ovs_pmd_rxq_affinity: "0:22,1:66,2:23,3:67,4:24,5:68"
-            compute_ovs_pmd_cpu_mask: '"0xfc000000000fc00000"'
+            #compute_ovs_pmd_rxq_affinity: "0:22,1:66,2:23,3:67,4:24,5:68"
+            #compute_ovs_pmd_cpu_mask: '"0xfc000000000fc00000"'
             #compute_ovs_pmd_cpu_mask: '"0x1ffffc00000"'
             # Shared cores 1 NUMA
             #compute_ovs_pmd_rxq_affinity: "0:22,1:23,2:24,3:25,4:26,5:27"
-            compute_ovs_dpdk_lcore_mask: '"0x10000000"'
+            #compute_ovs_dpdk_lcore_mask: '"0x10000000"'
             # Shared cores 2 NUMA
             #compute_ovs_pmd_cpu_mask: '"0x7f0000000000000fc00000"'
+            # 2 VMs on one compute node
+            compute_ovs_pmd_rxq_affinity: "0:39,1:40,2:41"
+            compute_ovs_pmd_cpu_mask: '"0x400000000007f000000000"'
+            compute_ovs_dpdk_lcore_mask: '"0x80000000000"'
         openstack_compute_node3:
           name: cmp003
           domain: ${_param:cluster_domain}

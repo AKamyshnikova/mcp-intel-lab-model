@@ -46,7 +46,7 @@ parameters:
           #bridge: br-prv
           enabled: true
           type: dpdk_ovs_port
-          n_rxq: "6"
+          n_rxq: "3"
           pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
         dpdk1:
           name: ${_param:dpdk1_name}
@@ -56,7 +56,7 @@ parameters:
           bond: dpdkbond1
           enabled: true
           type: dpdk_ovs_port
-          n_rxq: "6"
+          n_rxq: "3"
           pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
         dpdkbond1:
           enabled: true
