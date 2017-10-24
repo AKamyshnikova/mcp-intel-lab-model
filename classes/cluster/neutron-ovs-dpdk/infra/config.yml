@@ -11,11 +11,14 @@ classes:
 - system.salt.master.api
 - system.reclass.storage.salt
 - system.xtrabackup.server.single
+- system.cassandra.backup.server.single
 - system.reclass.storage.system.physical_control_cluster
-- system.reclass.storage.system.infra_maas_single
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_database_cluster
+- system.reclass.storage.system.cicd_control_cluster
 - cluster.neutron-ovs-dpdk.infra
+- cluster.neutron-ovs-dpdk.cicd
+
 parameters:
   _param:
     salt_master_base_environment: prd

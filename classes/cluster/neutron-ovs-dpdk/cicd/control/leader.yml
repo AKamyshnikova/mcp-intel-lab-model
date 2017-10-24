@@ -1,0 +1,122 @@
+
+classes:
+  - service.python.environment
+  # Services
+  - system.docker.client
+  - system.aptly.server.docker
+  # Docker services
+  - system.docker.swarm.stack.aptly
+  - system.docker.swarm.stack.docker
+  - system.docker.swarm.stack.gerrit
+  - system.docker.swarm.stack.jenkins
+  - system.docker.swarm.stack.ldap
+
+  # Jenkins
+  - system.jenkins.master.config
+  - system.jenkins.client
+  - system.jenkins.client.credential.gerrit
+  - system.jenkins.client.credential.salt
+  # Jobs
+  - system.jenkins.client.job.aptly
+  - system.jenkins.client.job.git-mirrors.downstream.pipelines
+  - system.jenkins.client.job.deploy.openstack
+  - system.jenkins.client.job.deploy.update
+  # Security
+  - system.jenkins.client.security.ldap
+  - system.jenkins.client.security.matrix
+  # Slaves
+  - system.jenkins.client.node
+  # OpenLDAP
+  - system.openldap.client
+  - system.openldap.client.people.admin
+
+  # Gerrit
+  - system.gerrit.client
+  - system.gerrit.client.project.ci
+
+  - system.docker.swarm.master
+
+  - cluster.contrail-cicd.infra
+  - cluster.contrail-cicd.cicd.control
+
+parameters:
+  _param:
+    # OpenLDAP
+    openldap_organisation: "${_param:cluster_name}"
+    openldap_dn: "dc=neutron-ovs-dpdk,dc=local"
+    openldap_domain: "neutron-ovs-dpdk.local"
+    openldap_admin_password: PO9oOk42enFocPph
+    openldap_config_password: N3xi2l2Nnmw9dn67
+    openldap_readonly_password: fcXNbmGDXgSShmC6
+
+    # Jenkins
+    jenkins_slave_user: admin
+    jenkins_client_user: admin
+    jenkins_admin_password: ${_param:openldap_admin_password}
+    jenkins_security_ldap_server: ${_param:cluster_vip_address}
+    jenkins_security_ldap_root_dn: ${_param:openldap_dn}
+    jenkins_security_ldap_manager_dn: "cn=admin,${_param:openldap_dn}"
+    jenkins_security_ldap_manager_password: ${_param:openldap_admin_password}
+    jenkins_slave_password: ${_param:jenkins_admin_password}
+    jenkins_client_password: ${_param:jenkins_admin_password}
+    jenkins_admin_email: ${_param:admin_email}
+    jenkins_admin_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDm7itEIttQMHNTXxMLQaqBQzzECj3AU3XLxJFcFaQp36TeirTuR9YP0wMftWymRLTsjuRWDTsR26uNuKjulNvGM0SwPAKWgatshDNz0z/Rb+XLPLkCZBPXaq0fdXmnUP3DSeKU/X+HjSUKEVkjWg1iB07V2rwdCyRB84i5ESC48ZxaxPlmTQk1t3XASnTSWTTSFTnogWmMV5Y718+v6yLxs6HAhb3oN7NwtHvHjmbILDoPZUXLGTE2uuactFQdY5NiVCCAOiU3FC0GrIERjzxOoiyBXHtr04+Xa7Em3xMzpJWd7R3RJc+7fZeD7KfhsB/fIwGP6WZ/r1+KxNCcnC4z
+    jenkins_admin_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEA5u4rRCLbUDBzU18TC0GqgUM8xAo9wFN1y8SRXBWkKd+k3oq0
+      7kfWD9MDH7VspkS07I7kVg07Edurjbio7pTbxjNEsDwCloGrbIQzc9M/0W/lyzy5
+      AmQT12qtH3V5p1D9w0nilP1/h40lChFZI1oNYgdO1dq8HQskQfOIuREguPGcWsT5
+      Zk0JNbd1wEp00lk00hU56IFpjFeWO9fPr+si8bOhwIW96DezcLR7x45myCw6D2VF
+      yxkxNrrmnLRUHWOTYlQggDolNxQtBqyBEY88TqIsgVx7a9OPl2uxJt8TM6SVne0d
+      0SXPu32Xg+yn4bAf3yMBj+lmf69fisTQnJwuMwIDAQABAoIBAE8MxF7El9JxY2js
+      qLY3ukgZXhm1b8IAT9h6509gURvMZMGRNbJDgPFVyEH4dsLLzisUFvGmAcxxJ96R
+      kbJp3nmQXzj8sd4XcTjqYDqL29KzvTO/C43X+DrLV4vnSMePn+5Twm5CAH/EPyOd
+      IKhLUT13RvNJtw8yGy1AUlMXm93yoJcHWMhS2VESj/gIxnA3d7clt8fG0fyFkutQ
+      vDzkr7B3d3DmrAm3J03b4bYelXvVazy+bZkVSEdOAxVgX4naEP8q4nnlKC8GVTi1
+      i5Qd3+bmxSQOD4uJAvHamyJWi/Z5B0zxStnAGe0YEdTuCugexM3TJZlIgu/3ZhN3
+      tVidecECgYEA98seLWrzN6h/gPAJafXqjWbPKCcmpmI1NqvObsAVEj+sLkfZIutr
+      SfJVQQetwlgT/Vo9zXcMMSIZ0mkpQXgEibKxbPlS0M11fNMSUoNHkgWcxnFpidjy
+      t9Ae/+gqo89fsoj4TGXsaIWZl4hWyiLatYRM6HG4IC8mm/nZCDZEknECgYEA7pQU
+      cDGJIjrmMbhOBeWzAhX4O+oKSv0iIO1z/NdzgtFOOYVW5W4ZPmqAvOInTin/GOuL
+      RNipjBEuAOCuUrqfnacxTOKhpthqz1enL/mBnH3Y9nlC2YvXtVowuTjX1FLvfOIO
+      LRuV7eUwt/djM70gK+IDuhSDtP+OYLZC12P1lOMCgYAmN9HDt4cjwn1H6b3J9f/j
+      J0Q0MTWo2+TRNdZ1BnM5iVCJItO+qwi1MwcrLIAERYlvvgdiNUZQHa5V4ZpXWqd4
+      hXMQF7RKOCYyxmtBBrZ3Mx5nDP72H9vvtc3SMoDBGy7rXmzNe7rmtBRoZsLcElwh
+      OvKRt1hqvlr6G6L5vUT+QQKBgQDEUjQzUn/fHAqatWf28FqKh9uaKe/IX167K8q7
+      L+vMpUGykae86gl51BgV1h+z8VkKf6E9yPBT4zsw27J3PzzjdVZbR07wRbw23JEm
+      KDHgvapQv94juDCL+iiH8l+gR5Ls9/PkaIPKnEOnzrniNGoJ0lVwxTrQMU9PBAwi
+      xA2tMwKBgQCAgO9qA9bTRcvoivDnW3eWB8gVo07tRw/ti2K/419nzex7mZoseAZo
+      5am39RJVzjjnvUz0Dtgc0GAlSO+c6vxpIC0IyqbKiP6tzz6m9Gxh2dcmmWkaUHK7
+      wAGD9cREhoUKS3Q64UPWhMQcDZTdL0cBzST2H911tKfKAUPgJpRqvg==
+      -----END RSA PRIVATE KEY-----
+    # Jobs params
+    jenkins_gerrit_url: ssh://admin@${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_ssh_bind_port}
+    jenkins_aptly_api_url: http://${_param:haproxy_aptly_api_bind_host}:${_param:haproxy_aptly_api_bind_port}
+    jenkins_aptly_url: http://${_param:haproxy_aptly_public_bind_host}:${_param:haproxy_aptly_public_bind_port}
+    # Gerrit
+    gerrit_admin_password: ${_param:openldap_admin_password}
+    gerrit_admin_email: ${_param:admin_email}
+    gerrit_public_host: https://${_param:nginx_proxy_gerrit_server_site_host}:${_param:nginx_proxy_gerrit_server_site_port}
+    gerrit_admin_public_key: ${_param:jenkins_admin_public_key}
+    gerrit_admin_private_key: ${_param:jenkins_admin_private_key}
+    gerrit_auth_type: LDAP
+    gerrit_ldap_server: "ldap://${_param:cluster_vip_address}"
+    gerrit_ldap_bind_user: "cn=admin,${_param:openldap_dn}"
+    gerrit_ldap_bind_password: ${_param:openldap_admin_password}
+    gerrit_ldap_account_base: ou=people,${_param:openldap_dn}
+    gerrit_ldap_group_base: ou=groups,${_param:openldap_dn}
+parameters:
+  gerrit:
+    client:
+      repo:
+        gerritlib: git+http://${_param:aptly_server_hostname}:8088/gerritlib.git
+        jeepyb: git+http://${_param:aptly_server_hostname}:8088/jeepyb.git
+  python:
+    environment:
+      user:
+        - root:
+          name: root
+          pypi_mirror:
+            host: ${_param:aptly_server_hostname}
+            port: 8084
+            upstream_fallback: False
