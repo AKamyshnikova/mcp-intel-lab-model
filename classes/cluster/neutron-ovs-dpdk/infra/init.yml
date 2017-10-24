@@ -6,6 +6,7 @@ classes:
 - system.openssh.server.team.networking
 - cluster.neutron-ovs-dpdk._team
 - cluster.neutron-ovs-dpdk.openstack
+- cluster.neutron-ovs-dpdk.cicd
 parameters:
   _param:
     salt_control_trusty_image: http://apt-mk.mirantis.com/images/ubuntu-14-04-x64-mcp1.1.qcow2
@@ -15,6 +16,9 @@ parameters:
     # infra service addresses
     infra_config_address: 192.168.10.15
     infra_config_deploy_address: 192.168.10.15
+    docker_compose_image: ${_param:aptly_server_hostname}:5000/compose:1.8.0
+    aptly_server_hostname: apt
+    aptly_server_address: 192.168.10.14
 
     cluster_domain: neutron-ovs-dpdk.local
     cluster_name: neutron-ovs-dpdk
