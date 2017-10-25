@@ -1,7 +1,10 @@
 parameters:
   _param:
     openstack_region: RegionOne
-    admin_email: root@localhost
+    admin_email: ataraday@mirantis.com
+    #gerrit_admin_email: root@localhost
+    #jenkins_gerrit_url: ssh://admin@${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_ssh_bind_port}
+    #openldap_dn: "dc=neutron-ovs-dpdk,dc=local"
     openstack_version: ocata
     ##Neutron osv/nodvr + dpdk
     neutron_global_physnet_mtu: 1500

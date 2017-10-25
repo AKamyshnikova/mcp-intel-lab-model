@@ -36,8 +36,8 @@ classes:
 
   - system.docker.swarm.master
 
-  - cluster.contrail-cicd.infra
-  - cluster.contrail-cicd.cicd.control
+  - cluster.neutron-ovs-dpdk.infra
+  - cluster.neutron-ovs-dpdk.cicd.control
 
 parameters:
   _param:
