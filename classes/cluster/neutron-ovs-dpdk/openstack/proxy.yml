@@ -8,6 +8,8 @@ classes:
 - system.glusterfs.client.volume.salt_pki
 - system.nginx.server.single
 - system.nginx.server.proxy.openstack_api
+- system.nginx.server.proxy.cicd.gerrit
+- system.nginx.server.proxy.cicd.jenkins
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
 - system.horizon.server.single
@@ -19,7 +21,7 @@ classes:
 - cluster.neutron-ovs-dpdk.openstack.dashboard
 parameters:
   _param:
-    keepalived_vip_interface: ens3
+    keepalived_vip_interface: eth1
     keepalived_vip_virtual_router_id: 240
     nginx_proxy_ssl:
       enabled: true
@@ -33,4 +35,4 @@ parameters:
   linux:
     network:
       interface:
-        ens3: ${_param:linux_single_interface}
+        eth1: ${_param:linux_single_interface}
