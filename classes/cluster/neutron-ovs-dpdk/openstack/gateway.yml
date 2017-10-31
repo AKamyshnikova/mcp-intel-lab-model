@@ -21,25 +21,14 @@ parameters:
       interface:
         eno1:
           enabled: true
-          type: slave
+          type: eth
           proto: manual
           name: ${_param:primary_first_nic}
-          master: bond0
         eno2:
           enabled: true
-          type: slave
+          type: eth
           proto: manual
           name: ${_param:primary_second_nic}
-          master: bond0
-        bond0:
-          enabled: true
-          proto: manual
-          type: bond
-          use_interfaces:
-          - ${_param:primary_first_nic}
-          - ${_param:primary_second_nic}
-          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
-          mode: 802.3ad
         br_mgm:
           enabled: true
           proto: static
@@ -47,14 +36,14 @@ parameters:
           address: ${_param:deploy_address}
           netmask: ${_param:deploy_network_netmask}
           use_interfaces:
-          - bond0
-        bond0.102:
-          name: bond0.${_param:control_vlan}
+          - ${_param:primary_first_nic}
+        eno1.102:
+          name: ${_param:primary_first_nic}.${_param:control_vlan}
           enabled: true
           proto: manual
           type: vlan
           use_interfaces:
-          - bond0
+          - ${_param:primary_first_nic}
         br_ctl:
           enabled: true
           proto: static
@@ -62,14 +51,14 @@ parameters:
           address: ${_param:single_address}
           netmask: ${_param:control_network_netmask}
           use_interfaces:
-          - bond0.${_param:control_vlan}
-        bond0.103:
-          name: bond0.${_param:public_vlan}
+          - ${_param:primary_first_nic}.${_param:control_vlan}
+        eno1.103:
+          name: ${_param:primary_first_nic}.${_param:public_vlan}
           enabled: true
           proto: manual
           type: vlan
           use_interfaces:
-          - bond0
+          - ${_param:primary_first_nic}
         br_ex:
           enabled: true
           proto: static
@@ -78,7 +67,7 @@ parameters:
           netmask: ${_param:public_network_netmask}
           gateway: ${_param:public_network_gateway}
           use_interfaces:
-          - bond0.${_param:public_vlan}
+          - ${_param:primary_first_nic}.${_param:public_vlan}
           use_ovs_ports:
           - float-to-ex
         br-floating:
@@ -88,27 +77,6 @@ parameters:
           enabled: true
           type: ovs_port
           bridge: br-floating
-        ens801f0:
-          enabled: true
-          type: slave
-          proto: manual
-          name: ${_param:tenant_first_nic}
-          master: bond1
-        ens801f1:
-          enabled: true
-          type: slave
-          proto: manual
-          name: ${_param:tenant_second_nic}
-          master: bond1
-        bond1:
-          enabled: true
-          proto: manual
-          type: bond
-          use_interfaces:
-          - ${_param:tenant_first_nic}
-          - ${_param:tenant_second_nic}
-          slaves: ${_param:tenant_first_nic} ${_param:tenant_second_nic}
-          mode: 802.3ad
         br_ten:
           enabled: true
           proto: static
@@ -116,7 +84,7 @@ parameters:
           address: ${_param:tenant_address}
           netmask: ${_param:tenant_network_netmask}
           use_interfaces:
-          - bond1
+          - ${_param:primary_second_nic}
 #          proto: static
 #          ovs_options: tag=${_param:tenant_vlan}
 #          address: ${_param:tenant_address}
@@ -128,3 +96,4 @@ parameters:
 #          enabled: true
 #          type: ovs_port
 #          bridge: br-prv
+
