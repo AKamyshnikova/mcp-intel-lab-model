@@ -108,9 +108,9 @@ parameters:
 #parameters:
   gerrit:
     client:
-      repo:
-        gerritlib: git+http://${_param:aptly_server_hostname}:8088/gerritlib.git
-        jeepyb: git+http://${_param:aptly_server_hostname}:8088/jeepyb.git
+      repo: {}
+  #      gerritlib: git+http://${_param:aptly_server_hostname}:8088/gerritlib.git
+  #      jeepyb: git+http://${_param:aptly_server_hostname}:8088/jeepyb.git
   python:
     environment:
       user:
