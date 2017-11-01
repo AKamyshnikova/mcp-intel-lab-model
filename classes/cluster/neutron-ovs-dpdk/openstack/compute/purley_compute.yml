@@ -46,35 +46,38 @@ parameters:
           - ${linux:network:hostname}
           - ${linux:network:fqdn}
       interface:
-        dpdk0:
-          name: ${_param:dpdk0_name}
-          pci: ${_param:dpdk0_pci}
-          driver: vfio-pci
-          bond: dpdkbond1
-          #bridge: br-prv
-          enabled: true
-          type: dpdk_ovs_port
-          n_rxq: "6"
-          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
-        dpdk1:
-          name: ${_param:dpdk1_name}
-          pci: ${_param:dpdk1_pci}
-          driver: vfio-pci
-          bond: dpdkbond1
-          enabled: true
-          type: dpdk_ovs_port
-          n_rxq: "6"
-          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
-        dpdkbond1:
-          enabled: true
-          bridge: br-mesh
-          type: dpdk_ovs_bond
-          mode: active-backup
+#        dpdk0:
+#          name: ${_param:dpdk0_name}
+#          pci: ${_param:dpdk0_pci}
+#          driver: vfio-pci
+#          bond: dpdkbond1
+#          #bridge: br-prv
+#          enabled: true
+#          type: dpdk_ovs_port
+#          n_rxq: "6"
+#          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
+#        dpdk1:
+#          name: ${_param:dpdk1_name}
+#          pci: ${_param:dpdk1_pci}
+#          driver: vfio-pci
+#          bond: dpdkbond1
+#          enabled: true
+#          type: dpdk_ovs_port
+#          n_rxq: "6"
+#          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
+#        dpdkbond1:
+#          enabled: true
+#          bridge: br-mesh
+#          type: dpdk_ovs_bond
+#          mode: active-backup
         br-mesh:
           enabled: true
-          type: dpdk_ovs_bridge
+          type: bridge
+          proto: static
           address: ${_param:tenant_address}
           netmask: ${_param:tenant_network_netmask}
+          use_interfaces:
+          - bond0
         eno1:
           enabled: true
           type: slave
