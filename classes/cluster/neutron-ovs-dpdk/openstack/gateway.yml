@@ -67,7 +67,7 @@ parameters:
           netmask: ${_param:public_network_netmask}
           gateway: ${_param:public_network_gateway}
           use_interfaces:
-          - ${_param:primary_first_nic}.${_param:public_vlan}
+          - bond0.${_param:public_vlan}
           use_ovs_ports:
           - float-to-ex
         br-floating:
@@ -79,21 +79,17 @@ parameters:
           bridge: br-floating
         br_ten:
           enabled: true
-          proto: static
+          proto: manual
           type: bridge
-          address: ${_param:tenant_address}
-          netmask: ${_param:tenant_network_netmask}
           use_interfaces:
-          - ${_param:primary_second_nic}
-#          proto: static
-#          ovs_options: tag=${_param:tenant_vlan}
-#          address: ${_param:tenant_address}
-#          netmask: ${_param:tenant_network_netmask}
-#        br-prv:
-#          enabled: true
-#          type: ovs_bridge
-#        prv-to-tenant:
-#          enabled: true
-#          type: ovs_port
-#          bridge: br-prv
+          - eno2
+          use_ovs_ports:
+          - prv-to-tenant
+        br-prv:
+          enabled: true
+          type: ovs_bridge
+        prv-to-tenant:
+          enabled: true
+          type: ovs_port
+          bridge: br-prv
 
