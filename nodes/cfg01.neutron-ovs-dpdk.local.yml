@@ -6,6 +6,7 @@ parameters:
     reclass_data_repository: "https://github.com/AKamyshnikova/mcp-intel-lab-model.git"
     linux_system_codename: xenial
     salt_master_host: 192.168.10.15
+    public_address: 172.16.98.4
     salt_master_base_environment: prd
 
   linux:
