@@ -178,3 +178,12 @@ parameters:
               compute_ovs_pmd_cpu_mask: '"0x1fff"'
               compute_ovs_dpdk_lcore_mask: "'0x20000'"
               compute_ovs_pmd_rxq_affinity: "0:0,1:1,2:2,3:3,4:4,5:5"
+        cicd_control_node01:
+          params:
+            public_address: 172.16.98.14
+        cicd_control_node02:
+          params:
+            public_address: 172.16.98.15
+        cicd_control_node03:
+          params:
+            public_address: 172.16.98.16

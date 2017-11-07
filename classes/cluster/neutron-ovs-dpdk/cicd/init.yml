@@ -1,7 +1,6 @@
 parameters:
   _param:
-    cicd_ext_address: 172.16.98.17
-    cicd_control_address: 192.168.20.90
+    cicd_control_address: 172.16.98.10
     cicd_control_node01_address: 192.168.20.91
     cicd_control_node02_address: 192.168.20.92
     cicd_control_node03_address: 192.168.20.93
