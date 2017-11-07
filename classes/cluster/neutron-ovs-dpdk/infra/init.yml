@@ -49,6 +49,7 @@ parameters:
 
     control_network_netmask: 255.255.255.0
     control_vlan: 102
+    public_vlan: 103
 
     tenant_network_netmask: 255.255.255.0
 

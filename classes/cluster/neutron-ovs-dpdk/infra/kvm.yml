@@ -155,6 +155,21 @@ parameters:
           netmask: ${_param:control_network_netmask}
           use_interfaces:
           - bond0.${_param:control_vlan}
+        bond0.1:
+          name: bond0.${_param:public_vlan}
+          enabled: true
+          proto: manual
+          type: vlan
+          use_interfaces:
+          - bond0
+        br_ex:
+          enabled: true
+          type: bridge
+          proto: static
+          address: ${_param:public_address}
+          netmask: ${_param:control_network_netmask}
+          use_interfaces:
+          - bond0.${_param:public_vlan}
     system:
      user:
        root:

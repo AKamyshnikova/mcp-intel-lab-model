@@ -36,14 +36,17 @@ parameters:
       node:
         infra_kvm_node01:
           params:
+            public_address: 172.16.98.11
             keepalived_vip_priority: 100
             linux_system_codename: xenial
         infra_kvm_node02:
           params:
+            public_address: 172.16.98.12
             keepalived_vip_priority: 101
             linux_system_codename: xenial
         infra_kvm_node03:
           params:
+            public_address: 172.16.98.13
             keepalived_vip_priority: 102
             linux_system_codename: xenial
         openstack_control_node01:
