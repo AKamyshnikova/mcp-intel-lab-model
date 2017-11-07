@@ -72,7 +72,7 @@ parameters:
   aptly:
     publisher:
       source:
-        image: ${_param:aptly_server_hostname}:5000/aptly-publisher
+        image: tcpcloud/aptly-publisher
   docker:
     host:
       insecure_registries:
