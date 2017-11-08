@@ -57,6 +57,7 @@ parameters:
     dns_server02: 8.8.4.4
     deploy_network_netmask: 255.255.255.0
     deploy_network_gateway: 192.168.10.91
+    public_network_gateway: 172.16.98.1
 
     public_network: 172.16.98.0/24
     public_network_netmask: 255.255.255.0
