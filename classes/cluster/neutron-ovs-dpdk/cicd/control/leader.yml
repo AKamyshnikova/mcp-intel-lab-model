@@ -96,7 +96,7 @@ parameters:
     # Gerrit
     gerrit_admin_password: ${_param:openldap_admin_password}
     gerrit_admin_email: ${_param:admin_email}
-    gerrit_public_host: https://${_param:nginx_proxy_gerrit_server_site_host}:${_param:nginx_proxy_gerrit_server_site_port}
+    gerrit_public_host: https://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
     gerrit_admin_public_key: ${_param:jenkins_admin_public_key}
     gerrit_admin_private_key: ${_param:jenkins_admin_private_key}
     gerrit_auth_type: LDAP
