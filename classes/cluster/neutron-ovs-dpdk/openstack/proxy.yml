@@ -21,7 +21,7 @@ classes:
 - cluster.neutron-ovs-dpdk.openstack.dashboard
 parameters:
   _param:
-    keepalived_vip_interface: ens3
+    keepalived_vip_interface: ens6
     keepalived_vip_virtual_router_id: 240
     nginx_proxy_ssl:
       enabled: true
@@ -36,3 +36,4 @@ parameters:
     network:
       interface:
         ens3: ${_param:linux_single_interface}
+        ens6: ${_param:linux_public_interface}
