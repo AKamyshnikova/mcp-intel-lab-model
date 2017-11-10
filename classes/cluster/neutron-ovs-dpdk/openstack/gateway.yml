@@ -21,75 +21,78 @@ parameters:
       interface:
         eno1:
           enabled: true
-          type: eth
+          type: slave
           proto: manual
           name: ${_param:primary_first_nic}
+          master: bond0
         eno2:
           enabled: true
-          type: eth
+          type: slave
           proto: manual
           name: ${_param:primary_second_nic}
+          master: bond0
+        bond0:
+          enabled: true
+          proto: manual
+          ovs_bridge: br-floating
+          ovs_type: OVSPort
+          type: bond
+          use_interfaces:
+          - ${_param:primary_first_nic}
+          slaves: ${_param:primary_first_nic} ${_param:primary_second_nic}
+          mode: 802.3ad
         br_mgm:
-          enabled: true
-          proto: static
-          type: bridge
-          address: ${_param:deploy_address}
-          netmask: ${_param:deploy_network_netmask}
-          use_interfaces:
-          - ${_param:primary_first_nic}
-        eno1.102:
-          name: ${_param:primary_first_nic}.${_param:control_vlan}
-          enabled: true
-          proto: manual
-          type: vlan
-          use_interfaces:
-          - ${_param:primary_first_nic}
-        br_ctl:
-          enabled: true
-          proto: static
-          type: bridge
-          address: ${_param:single_address}
-          netmask: ${_param:control_network_netmask}
-          use_interfaces:
-          - ${_param:primary_first_nic}.${_param:control_vlan}
-        eno1.103:
-          name: ${_param:primary_first_nic}.${_param:public_vlan}
-          enabled: true
-          proto: manual
-          type: vlan
-          use_interfaces:
-          - ${_param:primary_first_nic}
-        br_ex:
-          enabled: true
-          proto: static
-          type: bridge
-          address: ${_param:public_address}
-          netmask: ${_param:public_network_netmask}
-          gateway: ${_param:public_network_gateway}
-          use_interfaces:
-          - bond0.${_param:public_vlan}
-          use_ovs_ports:
-          - float-to-ex
-        br-floating:
-          enabled: true
-          type: ovs_bridge
-        float-to-ex:
           enabled: true
           type: ovs_port
           bridge: br-floating
-        br_ten:
+          proto: static
+          address: ${_param:deploy_address}
+          netmask: ${_param:deploy_network_netmask}
+        br_ctl:
           enabled: true
-          proto: manual
-          type: bridge
-          use_interfaces:
-          - eno2
-          use_ovs_ports:
-          - prv-to-tenant
+          type: ovs_port
+          bridge: br-floating
+          proto: static
+          ovs_options: tag=102
+          address: ${_param:single_address}
+          netmask: ${_param:control_network_netmask}
+        br_ex:
+          enabled: true
+          type: ovs_port
+          bridge: br-floating
+          proto: static
+          ovs_options: tag=103
+          address: ${_param:public_address}
+          netmask: ${_param:public_network_netmask}
+          gateway: ${_param:public_network_gateway}
+        br-floating:
+          enabled: true
+          type: ovs_bridge
         br-prv:
           enabled: true
           type: ovs_bridge
-        prv-to-tenant:
+        floating-to-prv:
           enabled: true
           type: ovs_port
+          port_type: patch
+          bridge: br-floating
+          peer: prv-to-floating
+        prv-to-floating:
+          enabled: true
+          type: ovs_port
+          port_type: patch
           bridge: br-prv
+          peer: floating-to-prv
+#        br_ten:
+#          enabled: true
+#          proto: manual
+#          type: bridge
+#          use_interfaces:
+#          - eno2
+#          use_ovs_ports:
+#          - prv-to-tenant
+#        prv-to-tenant:
+#          enabled: true
+#          type: ovs_port
+#          bridge: br-prv
 
