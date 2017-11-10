@@ -41,6 +41,7 @@ parameters:
     server:
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
+        external_vlan_range: "${_param:neutron_external_vlan_range}"
   linux:
     network:
       interface:

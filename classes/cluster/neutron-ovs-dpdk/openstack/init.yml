@@ -25,6 +25,7 @@ parameters:
     compute_ovs_memory_channels: "2"
     neutron_tenant_network_types: "flat,vlan" # nondvr + dpdk
     neutron_tenant_vlan_range: 106:200
+    neutron_external_vlan_range: 103:103
     compute_hugepages_size: 1G
     compute_hugepages_count: 48
     compute_hugepages_mount: /mnt/hugepages_1G
