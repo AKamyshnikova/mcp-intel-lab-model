@@ -1,0 +1,69 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        test_vnf_onboarding:
+          type: workflow-scm
+          name: test-vnf-onboarding
+          display_name: "VNF onboarding tests pipeline"
+          scm:
+            type: git
+            url: "https://github.com/dmi-try/jenkins_tmp.git"
+            branch: intel
+            script: groovy/test_vnf_onboarding.groovy
+          trigger:
+            gerrit:
+              project:
+                vnf-onboarding/sandbox:
+                  branches:
+                    - master
+              event:
+                comment:
+                  - addedContains:
+                      commentAddedCommentContains: '(test|recheck|reverify)'
+              message:
+                build_successful: "Build successful"
+                build_unstable: "Build unstable"
+                build_failure: "Build failed"
+
+        hello_world:
+          type: workflow-scm
+          name: hello_world
+          display_name: "Hello, World!"
+          discard:
+            build:
+              keep_num: 20
+          concurrent: false
+          scm:
+            type: git
+            #url: "${_param:jenkins_gerrit_url}/kubernetes-ci/kubernetes-pipelines"
+            #credentials: "gerrit"
+            url: "https://github.com/dmi-try/jenkins_tmp.git"
+            branch: intel
+            script: groovy/hello_world.groovy
+          trigger:
+            gerrit:
+              project:
+                vnf-onboarding/sandbox:
+                  branches:
+                    - master
+              event:
+                patchset:
+                  - created:
+                      excludeDrafts: true
+                      excludeTrivialRebase: false
+                      excludeNoCodeChange: true
+                change:
+                  - merged
+                comment:
+                  - addedContains:
+                      commentAddedCommentContains: '(test|recheck|reverify)'
+              message:
+                build_successful: "Build successful"
+                build_unstable: "Build unstable"
+                build_failure: "Build failed"
+          param:
+            RECIPIENT:
+              type: string
+              default: 'World'
+              description: 'Simple param'
