@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.mcp.extra
 - system.linux.system.repo.saltstack.xenial
 - system.linux.system.repo.glusterfs
+- system.linux.system.repo.sensu
 - system.glusterfs.client.cluster
 - system.glusterfs.client.volume.salt_pki
 - system.nginx.server.single
@@ -19,7 +20,7 @@ classes:
 - service.keepalived.cluster.single
 - cluster.neutron-ovs-dpdk.infra
 - cluster.neutron-ovs-dpdk.openstack.dashboard
-- cluster.neutron-ovs-dpdk.openstack.stacklight.proxy
+- cluster.neutron-ovs-dpdk.stacklight.proxy
 parameters:
   _param:
     keepalived_vip_interface: ens6
