@@ -1,14 +1,14 @@
 classes:
-- system.linux.system.repo.ubuntu
-- system.linux.system.repo.influxdb
-- system.linux.system.repo.saltstack.xenial
-- system.linux.system.repo.mcp.extra
-- system.influxdb.server.single
-- system.influxdb.database.ceilometer
-- system.influxdb.database.stacklight
-- system.haproxy.proxy.listen.stacklight.influxdb
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_telemetry_vip
+- system.linux.system.repo.influxdb
+- system.linux.system.repo.mcp.extra
+- system.haproxy.proxy.listen.stacklight.influxdb_relay
+- system.influxdb.relay.cluster
+- system.influxdb.server.single
+- system.influxdb.database.ceilometer
+- system.influxdb.database.prometheus
+- cluster.neutron-ovs-dpdk.stacklight
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
