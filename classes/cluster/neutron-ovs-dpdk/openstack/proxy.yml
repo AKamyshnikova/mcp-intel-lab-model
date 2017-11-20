@@ -34,8 +34,25 @@ parameters:
       cert_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:proxy:common_name}.crt
       chain_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:proxy:common_name}-with-chain.crt
     cluster_vip_address: ${_param:openstack_proxy_address}
+    apt_mk_version: nightly
   linux:
     network:
       interface:
+        ens2: ${_param:linux_dhcp_interface}
         ens3: ${_param:linux_single_interface}
-        ens6: ${_param:linux_public_interface}
+        #ens6: ${_param:linux_public_interface}
+        #ens2:
+        #  enabled: true
+        #  type: eth
+        #  proto: dhcp
+        #ens3: ${_param:linux_single_interface}
+        #ens6:
+        #  enabled: true
+        #  type: eth
+        #  proto: static
+        #  address: ${_param:public_address}
+        #  netmask: ${_param:control_network_netmask}
+        #  gateway: ${_param:public_network_gateway}
+        #  name_servers:
+        #    - ${_param:dns_server01}
+        #    - ${_param:dns_server02}
