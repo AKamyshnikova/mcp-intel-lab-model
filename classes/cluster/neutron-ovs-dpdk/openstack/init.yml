@@ -101,6 +101,8 @@ parameters:
     mongodb_shared_key: eZ1E5HAGn2RqHQ5sPe6KNBkH0EsulU4sRTB0VXZQDZPkpCxOmNC8w9ZxjApJVXJ9
     metadata_password: WdpjUGGFPz9kjCI7
     openstack_telemetry_keepalived_password: RyDNY2QP6npCAuhb
+    stacklight_notification_topic: stacklight_notifications
+    openstack_notification_topics: "notifications,${_param:stacklight_notification_topic}"
     salt_pki_proxy_alt_names: IP:${_param:cluster_public_host},DNS:${_param:cluster_public_host},IP:${_param:openstack_proxy_address},DNS:horizon.${_param:cluster_domain}
     
     # openstack service addresses

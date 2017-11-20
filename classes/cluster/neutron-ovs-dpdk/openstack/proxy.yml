@@ -19,6 +19,7 @@ classes:
 - service.keepalived.cluster.single
 - cluster.neutron-ovs-dpdk.infra
 - cluster.neutron-ovs-dpdk.openstack.dashboard
+- cluster.neutron-ovs-dpdk.openstack.stacklight.proxy
 parameters:
   _param:
     keepalived_vip_interface: ens6
