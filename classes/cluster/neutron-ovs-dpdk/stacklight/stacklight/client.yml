@@ -7,8 +7,10 @@ classes:
 - system.docker.swarm.stack.monitoring.remote_collector
 
 
+#- cluster.neutron-ovs-dpdk.infra
+#- cluster.neutron-ovs-dpdk.cicd.control
+
 - cluster.neutron-ovs-dpdk.infra
-- cluster.neutron-ovs-dpdk.cicd.control
 parameters:
   _param:
     docker_image_alertmanager: docker-prod-local.artifactory.mirantis.com/openstack-docker/alertmanager:latest

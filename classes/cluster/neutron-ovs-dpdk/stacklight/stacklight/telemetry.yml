@@ -12,7 +12,6 @@ classes:
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
-    public_address: ''
     keepalived_stacklight_telemetry_vip_address: ${_param:stacklight_telemetry_address}
     keepalived_stacklight_telemetry_vip_password: ${_param:stacklight_telemetry_keepalived_password}
     keepalived_stacklight_telemetry_vip_interface: ens3

@@ -7,7 +7,7 @@ classes:
 - cluster.neutron-ovs-dpdk._team
 - cluster.neutron-ovs-dpdk.openstack
 - cluster.neutron-ovs-dpdk.stacklight
-- cluster.neutron-ovs-dpdk.stacklight.client
+#- cluster.neutron-ovs-dpdk.stacklight.client
 - cluster.neutron-ovs-dpdk.cicd
 parameters:
   _param:
