@@ -26,6 +26,7 @@ classes:
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
+    public_address: ''
     linux_system_codename: xenial
     keepalived_vip_interface: ens3
     keepalived_vip_virtual_router_id: 50
