@@ -13,6 +13,7 @@ classes:
 - cluster.neutron-ovs-dpdk.infra
 parameters:
   _param:
+    public_address: ''
     docker_image_alertmanager: docker-prod-local.artifactory.mirantis.com/openstack-docker/alertmanager:latest
     docker_image_pushgateway: docker-prod-local.artifactory.mirantis.com/openstack-docker/pushgateway:latest
     docker_image_prometheus: docker-prod-local.artifactory.mirantis.com/openstack-docker/prometheus:latest
