@@ -55,8 +55,8 @@ parameters:
 
     tenant_network_netmask: 255.255.255.0
 
-    dns_server01: 8.8.8.8
-    dns_server02: 8.8.4.4
+    dns_server01: 172.18.80.136
+    dns_server02: 8.8.8.8
     deploy_network_netmask: 255.255.255.0
     deploy_network_gateway: 192.168.10.91
     public_network_gateway: 172.16.98.1
