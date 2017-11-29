@@ -103,7 +103,7 @@ parameters:
     # Gerrit
     gerrit_admin_password: ${_param:openldap_admin_password}
     gerrit_admin_email: ${_param:admin_email}
-    gerrit_public_host: https://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
+    gerrit_public_host: http://${_param:haproxy_gerrit_bind_host}:${_param:haproxy_gerrit_bind_port}
     gerrit_admin_public_key: ${_param:jenkins_admin_public_key}
     gerrit_admin_private_key: ${_param:jenkins_admin_private_key}
     gerrit_auth_type: LDAP
@@ -139,7 +139,7 @@ parameters:
       jenkins:
         fullname: Jenkins
         email: "jenkins@example.com"
-        ssh_key: ${_param:jenkins_admin_public_key}
+        ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDm7itEIttQMHNTXxMLQaqBQzzECj3AU3XLxJFcFaQp36TeirTuR9YP0wMftWymRLTsjuRWDTsR26uNuKjulNvGM0SwPAKWgatshDNz0z/Rb+XLPLkCZBPXaq0fdXmnUP3DSeKU/X+HjSUKEVkjWg1iB07V2rwdCyRB84i5ESC48ZxaxPlmTQk1t3XASnTSWTTSFTnogWmMV5Y718+v6yLxs6HAhb3oN7NwtHvHjmbILDoPZUXLGTE2uuactFQdY5NiVCCAOiU3FC0GrIERjzxOoiyBXHtr04+Xa7Em3xMzpJWd7R3RJc+7fZeD7KfhsB/fIwGP6WZ/r1+KxNCcnC4z
         groups:
         - Non-Interactive Users
   openldap:
