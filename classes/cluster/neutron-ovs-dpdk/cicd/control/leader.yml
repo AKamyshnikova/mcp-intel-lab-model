@@ -135,6 +135,35 @@ parameters:
           require_change_id: true
           require_agreement: false
           merge_content: true
+    user:
+      jenkins:
+        fullname: Jenkins
+        email: "jenkins@example.com"
+        ssh_key: ${_param:jenkins_admin_public_key}
+        groups:
+        - Non-Interactive Users
+  openldap:
+    client:
+      entry:
+        people:
+          entry:
+            jenkins:
+              attr:
+                gecos: Jenkins
+                gidNumber: 20002
+                givenName: Jenkins
+                homeDirectory: /home/jenkins
+                loginShell: /bin/bash
+                mail: jenkins@example.com
+                sn: Jenkins
+                uid: jenkins
+                uidNumber: 20002
+                userPassword: PO9oOk42enFocPph
+              classes:
+              - posixAccount
+              - inetOrgPerson
+              - top
+              - shadowAccount
 
   python:
     environment:
