@@ -14,6 +14,12 @@ parameters:
           sudo: true
           full_name: Dmitry Pyzhov
           home: /home/dpyzhov
+        akasatkin:
+          enabled: true
+          name: akasatkin
+          sudo: true  
+          full_name: Aleksei Kasatkin
+          home: /home/akasatkin
   openssh:
     server:
       enabled: true
@@ -28,8 +34,16 @@ parameters:
           public_keys:
           - ${public_keys:dpyzhov}
           user: ${linux:system:user:dpyzhov}
+        akasatkin:  
+          enabled: true
+          public_keys:
+          - ${public_keys:akasatkin}
+          user: ${linux:system:user:akasatkin}
+
   public_keys:
     alwex:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAA+QZpjjBIMLqQe/qLdvmRHEEfs4Op+wC8pCQ+TlDrl7sSRXB9FZb4fbJ9qQbVOgNT/2LdtGpSJneuCkiJHtBior678obTw53TCT97ap3H44x948mKP4hc3yv+jbHugtjFQCx4Gp1Ey0Dcyv6qPeASLbEmSbHtj8Dp6lJ06nbELMU1n9XMTNvf0dbOKuofoFNQLSunQDndfFHUQsPFwV5V6KUEWFwihW1j62b2YQVs5P5AG9Y84NpEwNzOt0F0lnaEZVwfWQtcNSq3CILTDF8TuH9JemTRaMBMX/F1cmVEotu2D1wbQzbTxKKW5NmZPazKhdoM7zB1JfXGTw==
     dpyzhov:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCpCEigzaCPNPSuy0GMef/wsyGvBXjbZLxg4eR7oVKmRDsT01sjOFDgabwSBcbkvc7jeWw3RcxC8Upyhq2ADzwFSh+9AXRPbX1R2GxW85SYWg6xz4gFaM8CJ4XUT3S3lnhJ796xUSG9jOIe/pEk9L/4F41uzX8YSwQkGoio2j6za34ZWEVqDNNZt+PVC4woJjuw6r4jBZiEKWuVONeSLJeVwMwc9vwz1kED89OP3zenGknCY5PvM59CrcKHdVzseqHtzMW89nHTTAPTRPWX+07IgNWpI+IRB1KDbtRmeFpuLUwObfxzWqCDc2vpL6UF6uyIVEzLNBSSU4s0lmu0nyEM/uT5hpt/pchl50lfVBrIj+G3wIG+yy/sB4xddVNB5XxwiChxS1pkXgWx6apsOgrixdsVsw5sqRmYwecm3bqL2GFEl1UmLs3fdDyAfsG8uz/OyDl5I48LBZmklriDE6QB+vOG4n1BHPUkwiF2LeXf3JtUrBPhe7oe80xUVxPXjxZqtIHp2Tooj3u9TK5Wd00yOj4uGMyJoQdICSDqt/BATkTQ4a/JMhBGEb5GC6KuuEAIwfV7DnrDW+jyiV7JJ8GUHGbg3KKVPv7jCVcCnww6icywMClnFuAy+yagiq5DxYFkdk9wa1psbxpQKSXFBOO+iWqOYJoiIFwgSiujdM8ZfQ== dpyzhov@mac-pro-2017
+    akasatkin:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJFOEwYid83klmXcQs9QBDJwb1EG6Ly7DpJ32aH8gB8uguUPVO3rS/08GNav7+6GFLwlbWHVDe1MIFeNvyqh778B2piCzoajIT8aZFiutjbGtVPfkGkt94mibVutjO36eSEjEDW8GYQ2boisibha6B2mlz126y7nJN1VDSUr05Ro719i696vdN0fglu5DlT6qnOSei16EqkgQcMdyoxCfUOy9zBe3p1jGd2XKCOy3aGkhixEj6oaWSFRcA48SgqNSUO9A5NHTmWT/3j76Jsk92yw4e5OenWJbVx0BkU8q6U5fIncxkIQRYFUqB0X1TT9PnktDD4iJwNMXY7W2hYN2/ aleksey@aleksey-ThinkPad
