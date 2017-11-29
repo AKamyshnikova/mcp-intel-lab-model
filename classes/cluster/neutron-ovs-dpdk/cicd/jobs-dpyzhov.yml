@@ -14,7 +14,7 @@ parameters:
           trigger:
             gerrit:
               project:
-                vnf-onboarding/sandbox:
+                "vnf-onboarding/sandbox":
                   branches:
                     - master
               event:
@@ -44,17 +44,17 @@ parameters:
           trigger:
             gerrit:
               project:
-                vnf-onboarding/sandbox:
+                "sandbox":
                   branches:
                     - master
               event:
                 patchset:
                   - created:
-                      excludeDrafts: true
+                      excludeDrafts: false
                       excludeTrivialRebase: false
-                      excludeNoCodeChange: true
-                change:
-                  - merged
+                      excludeNoCodeChange: false
+                #change:
+                #  - merged
                 comment:
                   - addedContains:
                       commentAddedCommentContains: '(test|recheck|reverify)'
@@ -63,7 +63,15 @@ parameters:
                 build_unstable: "Build unstable"
                 build_failure: "Build failed"
           param:
-            RECIPIENT:
-              type: string
-              default: 'World'
-              description: 'Simple param'
+            # RECIPIENT:
+            #   type: string
+            #   default: 'World'
+            #   description: 'Simple param'
+            DEFAULT_GIT_URL:
+                type: string
+                description: "Run against alternate system reclass"
+                default: "${_param:jenkins_gerrit_url}/sandbox"
+            DEFAULT_GIT_REF:
+                type: string
+                default: master
+
