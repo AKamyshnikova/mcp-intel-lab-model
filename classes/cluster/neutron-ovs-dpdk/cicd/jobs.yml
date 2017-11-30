@@ -11,12 +11,9 @@ parameters:
               keep_num: 20
           scm:
             type: git
-            url: "https://github.com/dmi-try/jenkins_tmp.git"
-            branch: intel
-            script: groovy/test_vnf_onboarding.groovy
-            # url: "${_param:jenkins_gerrit_url}/sandbox"
-            # credentials: "gerrit"
-            # script: pipelines/test_vnf_onboarding.groovy
+            url: "${_param:jenkins_gerrit_url}/sandbox"
+            credentials: "gerrit"
+            script: pipelines/test_vnf_onboarding.groovy
           trigger:
             gerrit:
               project:
@@ -33,7 +30,7 @@ parameters:
                  - merged
                 comment:
                   - addedContains:
-                      commentAddedCommentContains: '(test|recheck|reverify)'
+                      commentAddedCommentContains: '(retest|recheck|reverify)'
               message:
                 build_successful: "Build successful"
                 build_unstable: "Build unstable"
