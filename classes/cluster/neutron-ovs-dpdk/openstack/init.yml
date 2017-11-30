@@ -7,7 +7,7 @@ parameters:
     #openldap_dn: "dc=neutron-ovs-dpdk,dc=local"
     openstack_version: ocata
     ##Neutron osv/nodvr + dpdk
-    neutron_global_physnet_mtu: 1500
+    neutron_global_physnet_mtu: 1496
     neutron_external_mtu: 1500
 
     neutron_enable_qos: False
