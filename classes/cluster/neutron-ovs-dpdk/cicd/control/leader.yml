@@ -21,7 +21,7 @@ classes:
   - system.jenkins.client.job.git-mirrors.downstream.pipelines
   - system.jenkins.client.job.deploy.openstack
   - system.jenkins.client.job.deploy.update
-  - cluster.neutron-ovs-dpdk.cicd.jobs-dpyzhov
+  - cluster.neutron-ovs-dpdk.cicd.jobs
   # Security
   - system.jenkins.client.security.ldap
   - system.jenkins.client.security.matrix
