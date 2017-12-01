@@ -44,19 +44,18 @@ parameters:
                 type: string
                 default: master
 
-        hello_world:
+        dpyzhov_dev:
           type: workflow-scm
-          name: hello_world
-          display_name: "Hello, World!"
+          name: dpyzhov_dev
           discard:
             build:
               keep_num: 20
           concurrent: false
           scm:
             type: git
-            url: "https://github.com/dmi-try/jenkins_tmp.git"
-            branch: intel
-            script: groovy/hello_world.groovy
+            url: "${_param:jenkins_gerrit_url}/dpyzhov-sandbox"
+            credentials: "gerrit"
+            script: hello_world.groovy
           trigger:
             gerrit:
               project:
@@ -66,7 +65,7 @@ parameters:
               event:
                 comment:
                   - addedContains:
-                      commentAddedCommentContains: '(helloworld)'
+                      commentAddedCommentContains: '(dpyzhovtest)'
               message:
                 build_successful: "Build successful"
                 build_unstable: "Build unstable"
