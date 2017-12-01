@@ -43,6 +43,18 @@ parameters:
             DEFAULT_GIT_REF:
                 type: string
                 default: master
+            OPENSTACK_API_URL:
+              type: string
+              default: "http://192.168.20.10:35357/v2.0"
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              default: "openstack-demo"
+            OPENSTACK_API_TENANT:
+              type: string
+              default: "demo"
+            GERRIT_CREDENTIALS:
+              type: string
+              default: "gerrit"
 
         dpyzhov_dev:
           type: workflow-scm
@@ -78,3 +90,15 @@ parameters:
             DEFAULT_GIT_REF:
                 type: string
                 default: master
+            OPENSTACK_API_URL:
+              type: string
+              default: "http://192.168.20.10:35357/v2.0"
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              default: "openstack-demo"
+            OPENSTACK_API_TENANT:
+              type: string
+              default: "demo"
+            GERRIT_CREDENTIALS:
+              type: string
+              default: "gerrit"
