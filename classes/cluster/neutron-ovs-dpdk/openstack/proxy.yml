@@ -26,7 +26,7 @@ parameters:
     keepalived_vip_interface: ens6
     keepalived_vip_virtual_router_id: 240
     nginx_proxy_ssl:
-      enabled: true
+      enabled: false
       authority: ${_param:salt_minion_ca_authority}
       engine: salt
       mode: secure
@@ -35,6 +35,16 @@ parameters:
       chain_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:proxy:common_name}-with-chain.crt
     cluster_vip_address: ${_param:openstack_proxy_address}
     apt_mk_version: nightly
+
+  nginx:
+    server:
+      nginx_proxy_openstack_web:
+          host:
+            port: 443
+            protocol: http
+      nginx_ssl_redirect_openstack_web:
+          enabled: false
+
   linux:
     network:
       interface:

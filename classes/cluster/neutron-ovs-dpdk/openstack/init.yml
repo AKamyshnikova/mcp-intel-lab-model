@@ -1,5 +1,6 @@
 parameters:
   _param:
+    cluster_public_protocol: http
     openstack_region: RegionOne
     admin_email: ataraday@mirantis.com
     #gerrit_admin_email: root@localhost
