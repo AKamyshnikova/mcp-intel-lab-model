@@ -33,6 +33,7 @@ parameters:
           names:
           - ${linux:network:hostname}
           - ${linux:network:fqdn}
+      bridge: openvswitch
       interface:
         eno1:
           enabled: true
@@ -94,14 +95,24 @@ parameters:
         bond1:
           enabled: true
           proto: manual
-          ovs_bridge: br-prv
-          ovs_type: OVSPort
           type: bond
           use_interfaces:
-          - ${_param:dpdk0_name} ${_param:dpdk1_name}
-          slaves: ${_param:dpdk0_name} ${_param:dpdk1_name}
+           - ${_param:dpdk0_name}
+           - ${_param:dpdk1_name}
+          slaves: ${_param:dpdk0_name}
           mode: active-backup
+        br_ten:
+          enabled: true
+          proto: manual
+          type: bridge
+          use_interfaces:
+          - bond1
+          use_ovs_ports:
+          - prv-to-tenant
         br-prv:
           enabled: true
           type: ovs_bridge
-        bridge: openvswitch
+        prv-to-tenant:
+          enabled: true
+          type: ovs_port
+          bridge: br-prv
