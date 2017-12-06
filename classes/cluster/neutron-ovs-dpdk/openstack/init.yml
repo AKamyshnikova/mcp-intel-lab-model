@@ -21,21 +21,21 @@ parameters:
     neutron_compute_agent_mode: legacy
 
     neutron_l3_ha: False
-    compute_dpdk_driver: vfio
-    compute_ovs_dpdk_socket_mem: "4096,4096"
-    compute_ovs_memory_channels: "2"
+#    compute_dpdk_driver: vfio
+#    compute_ovs_dpdk_socket_mem: "4096,4096"
+#    compute_ovs_memory_channels: "2"
     neutron_tenant_network_types: "flat,vlan" # nondvr + dpdk
     neutron_tenant_vlan_range: 106:200
-    neutron_external_vlan_range: 103:103
-    compute_hugepages_size: 1G
-    compute_hugepages_count: 48
-    compute_hugepages_mount: /mnt/hugepages_1G
+#    neutron_external_vlan_range: 103:103
+#    compute_hugepages_size: 1G
+#    compute_hugepages_count: 48
+#    compute_hugepages_mount: /mnt/hugepages_1G
     # This range for Broadwell compute nodes
     #nova_cpu_pinning: 66,67,68,69,70,71,72,73,74,75,76,77,78,79
     # Hyperthreading
     #nova_cpu_pinning: 29,73,30,74,31,75,32,76,33,77,34,78,35,79,36,80,37,81,38,32,39,83,40,84
     # 2 NUMA
-    nova_cpu_pinning: 44,45,46,47,48,49,50,51,52,53,54,55,56,57,58
+    # nova_cpu_pinning: 44,45,46,47,48,49,50,51,52,53,54,55,56,57,58
     # 2 NUMA ordered
     #nova_cpu_pinning: 2,46,3,47,4,48,5,49,6,50,7,51,8,52
     #nova_cpu_pinning: 66,67,68,69,70,71,72,73,74,75,76,77,78,79
@@ -43,7 +43,7 @@ parameters:
     #nova_cpu_pinning: 22,23,24,25,26,27,28,29,30,31,32,33,34,35,66,67,68,69,70,71,72,73,74,75,76,77,78,79
     #nova_cpu_pinning: 27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85
     #nova_cpu_pinning: 22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,66,67,68,69,76,77,78,79
-    compute_kernel_isolcpu: ${_param:nova_cpu_pinning}
+    #compute_kernel_isolcpu: ${_param:nova_cpu_pinning}
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: A6NH9Jpr2yw6Pv40
     galera_server_admin_password: c53NFfhagxVdemB3

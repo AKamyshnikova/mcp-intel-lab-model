@@ -3,8 +3,6 @@ classes:
 - system.linux.system.repo.saltstack.xenial
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
-- system.nova.compute.nfv.hugepages
-- system.nova.compute.nfv.cpu_pinning
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
 - system.ceilometer.agent.cluster
@@ -26,7 +24,6 @@ parameters:
     compute:
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
-      security_groups_enabled: false
 
   linux:
     network:
@@ -37,37 +34,6 @@ parameters:
           - ${linux:network:hostname}
           - ${linux:network:fqdn}
       interface:
-        dpdk0:
-          name: ${_param:dpdk0_name}
-          pci: ${_param:dpdk0_pci}
-          driver: vfio-pci
-          #driver: igb_uio
-          bond: dpdkbond1
-          #bridge: br-prv
-          enabled: true
-          type: dpdk_ovs_port
-          n_rxq: "6"
-          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
-        dpdk1:
-          name: ${_param:dpdk1_name}
-          pci: ${_param:dpdk1_pci}
-          driver: vfio-pci
-          #driver: igb_uio
-          bond: dpdkbond1
-          enabled: true
-          type: dpdk_ovs_port
-          n_rxq: "6"
-          pmd_rxq_affinity: ${_param:compute_ovs_pmd_rxq_affinity}
-        dpdkbond1:
-          enabled: true
-          bridge: br-mesh
-          type: dpdk_ovs_bond
-          mode: active-backup
-        br-mesh:
-          enabled: true
-          type: dpdk_ovs_bridge
-          address: ${_param:tenant_address}
-          netmask: ${_param:tenant_network_netmask}
         eno1:
           enabled: true
           type: slave
@@ -113,8 +79,29 @@ parameters:
           netmask: ${_param:control_network_netmask}
           use_interfaces:
           - bond0.${_param:control_vlan}
-      openvswitch:
-        pmd_cpu_mask: "${_param:compute_ovs_pmd_cpu_mask}"
-        dpdk_socket_mem: "${_param:compute_ovs_dpdk_socket_mem}"
-        dpdk_lcore_mask: "${_param:compute_ovs_dpdk_lcore_mask}"
-
+        ens801f0:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:dpdk0_name}
+          master: bond1
+        ens801f1:
+          enabled: true
+          type: slave
+          proto: manual
+          name: ${_param:dpdk1_name}
+          master: bond1
+        bond1:
+          enabled: true
+          proto: manual
+          ovs_bridge: br-prv
+          ovs_type: OVSPort
+          type: bond
+          use_interfaces:
+          - ${_param:dpdk0_name} ${_param:dpdk1_name}
+          slaves: ${_param:dpdk0_name} ${_param:dpdk1_name}
+          mode: active-backup
+        br-prv:
+          enabled: true
+          type: ovs_bridge
+        bridge: openvswitch

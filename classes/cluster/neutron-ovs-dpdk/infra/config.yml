@@ -119,7 +119,7 @@ parameters:
           name: ${_param:openstack_compute_rack01_hostname}<<count>>
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.compute.dpdk
+          - cluster.${_param:cluster_name}.openstack.compute
           repeat:
             count: 2
             start: 1
@@ -143,6 +143,7 @@ parameters:
             dpdk1_pci: '"0000:82:00.1"'
             primary_first_nic: eno1
             primary_second_nic: eno2
+            public_address: ''
             #compute_ovs_dpdk_lcore_mask: '"0x80000000000"'
             # Sep cores 1 NUMA
             #compute_ovs_pmd_rxq_affinity: "0:22,1:66,2:23,3:67,4:24,5:68"
