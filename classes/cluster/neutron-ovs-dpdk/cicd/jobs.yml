@@ -37,12 +37,12 @@ parameters:
                 build_failure: "Build failed"
           param:
             DEFAULT_GIT_URL:
-                type: string
-                description: "Run against alternate system reclass"
-                default: "${_param:jenkins_gerrit_url}/sandbox"
+              type: string
+              description: "Run against alternate system reclass"
+              default: "${_param:jenkins_gerrit_url}/sandbox"
             DEFAULT_GIT_REF:
-                type: string
-                default: master
+              type: string
+              default: master
             OPENSTACK_API_URL:
               type: string
               default: "http://192.168.20.10:35357/v2.0"
@@ -55,6 +55,12 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "gerrit"
+            ELASTIC_URL:
+              type: string
+              default: "192.168.20.60:9200"
+            DEBUG_OPTIONS:
+              type: string
+              description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
 
         dpyzhov_dev:
           type: workflow-scm
@@ -62,12 +68,13 @@ parameters:
           discard:
             build:
               keep_num: 20
-          concurrent: false
+          concurrent: true
           scm:
             type: git
             url: "${_param:jenkins_gerrit_url}/dpyzhov-sandbox"
             credentials: "gerrit"
             script: hello_world.groovy
+            basedir: "pipeline"
           trigger:
             gerrit:
               project:
@@ -84,12 +91,12 @@ parameters:
                 build_failure: "Build failed"
           param:
             DEFAULT_GIT_URL:
-                type: string
-                description: "Run against alternate system reclass"
-                default: "${_param:jenkins_gerrit_url}/sandbox"
+              type: string
+              description: "Run against alternate system reclass"
+              default: "${_param:jenkins_gerrit_url}/sandbox"
             DEFAULT_GIT_REF:
-                type: string
-                default: master
+              type: string
+              default: master
             OPENSTACK_API_URL:
               type: string
               default: "http://192.168.20.10:35357/v2.0"
@@ -102,3 +109,9 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "gerrit"
+            ELASTIC_URL:
+              type: string
+              default: "192.168.20.60:9200"
+            DEBUG_OPTIONS:
+              type: string
+              description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
