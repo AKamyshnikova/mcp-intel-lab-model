@@ -61,6 +61,7 @@ parameters:
     jenkins_slave_password: ${_param:jenkins_admin_password}
     jenkins_client_password: ${_param:jenkins_admin_password}
     jenkins_admin_email: ${_param:admin_email}
+    jenkins_aptly_storages: ''
     jenkins_admin_public_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDm7itEIttQMHNTXxMLQaqBQzzECj3AU3XLxJFcFaQp36TeirTuR9YP0wMftWymRLTsjuRWDTsR26uNuKjulNvGM0SwPAKWgatshDNz0z/Rb+XLPLkCZBPXaq0fdXmnUP3DSeKU/X+HjSUKEVkjWg1iB07V2rwdCyRB84i5ESC48ZxaxPlmTQk1t3XASnTSWTTSFTnogWmMV5Y718+v6yLxs6HAhb3oN7NwtHvHjmbILDoPZUXLGTE2uuactFQdY5NiVCCAOiU3FC0GrIERjzxOoiyBXHtr04+Xa7Em3xMzpJWd7R3RJc+7fZeD7KfhsB/fIwGP6WZ/r1+KxNCcnC4z
     jenkins_admin_private_key: |
       -----BEGIN RSA PRIVATE KEY-----
