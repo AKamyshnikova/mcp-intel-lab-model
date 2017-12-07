@@ -99,7 +99,7 @@ parameters:
           use_interfaces:
            - ${_param:dpdk0_name}
            - ${_param:dpdk1_name}
-          slaves: ${_param:dpdk0_name}
+          slaves: ${_param:dpdk0_name} ${_param:dpdk1_name}
           mode: active-backup
         br_ten:
           enabled: true
