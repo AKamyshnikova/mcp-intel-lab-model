@@ -45,7 +45,7 @@ parameters:
               default: master
             OPENSTACK_API_URL:
               type: string
-              default: "https://172.16.98.19:5000/v2.0"
+              default: "http://172.16.98.19:5000/v2.0"
             OPENSTACK_API_CREDENTIALS:
               type: string
               default: "openstack-demo"
@@ -104,7 +104,7 @@ parameters:
               default: master
             OPENSTACK_API_URL:
               type: string
-              default: "https://172.16.98.19:5000/v2.0"
+              default: "http://172.16.98.19:5000/v2.0"
             OPENSTACK_API_CREDENTIALS:
               type: string
               default: "openstack-demo"
