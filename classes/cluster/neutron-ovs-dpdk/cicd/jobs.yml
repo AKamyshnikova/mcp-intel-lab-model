@@ -45,7 +45,7 @@ parameters:
               default: master
             OPENSTACK_API_URL:
               type: string
-              default: "http://192.168.20.10:35357/v2.0"
+              default: "https://172.16.98.19:5000/v2.0"
             OPENSTACK_API_CREDENTIALS:
               type: string
               default: "openstack-demo"
@@ -61,6 +61,11 @@ parameters:
             DEBUG_OPTIONS:
               type: string
               description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
+            CUSTOM_CI_REPO:
+              type: string
+              description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
+            CUSTOM_CI_REPO_BRANCH:
+              type: string
 
         dpyzhov_dev:
           type: workflow-scm
@@ -99,7 +104,7 @@ parameters:
               default: master
             OPENSTACK_API_URL:
               type: string
-              default: "http://192.168.20.10:35357/v2.0"
+              default: "https://172.16.98.19:5000/v2.0"
             OPENSTACK_API_CREDENTIALS:
               type: string
               default: "openstack-demo"
@@ -115,3 +120,10 @@ parameters:
             DEBUG_OPTIONS:
               type: string
               description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
+            CUSTOM_CI_REPO:
+              type: string
+              description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
+              default: "https://gerrit.mcp.mirantis.net/vnf-onboarding/sandbox"
+            CUSTOM_CI_REPO_BRANCH:
+              type: string
+              default: "master"
