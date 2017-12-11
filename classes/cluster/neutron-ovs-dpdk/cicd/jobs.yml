@@ -66,6 +66,12 @@ parameters:
               description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
             CUSTOM_CI_REPO_BRANCH:
               type: string
+            CI_OPTIONS:
+              type: string
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+            VNF_OPTIONS:
+              type: string
+              default: "AVI_VERSION=17.2.3 AVI_USERNAME=admin AVI_PASSWORD=Swordfish1234 AVI_IMAGE_PASSWORD=58NFaGDJm(PJH0G AVI_OS_FLAVOR=avi_ctrl.small AVI_OS_IMAGE=avi-control-17.2.3"
 
         dpyzhov_dev:
           type: workflow-scm
@@ -127,3 +133,9 @@ parameters:
             CUSTOM_CI_REPO_BRANCH:
               type: string
               default: "master"
+            CI_OPTIONS:
+              type: string
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+            VNF_OPTIONS:
+              type: string
+              default: "AVI_VERSION=17.2.3 AVI_USERNAME=admin AVI_PASSWORD=Swordfish1234 AVI_IMAGE_PASSWORD=58NFaGDJm(PJH0G AVI_OS_FLAVOR=avi_ctrl.small AVI_OS_IMAGE=avi-control-17.2.3"
