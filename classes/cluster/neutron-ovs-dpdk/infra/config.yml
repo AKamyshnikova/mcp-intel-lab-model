@@ -26,7 +26,7 @@ classes:
 parameters:
   _param:
     salt_master_base_environment: prd
-    reclass_data_repository: "https://github.com/AKamyshnikova/mcp-intel-lab-model.git"
+    reclass_data_repository: "https://github.com/Mirantis/vnf-onboaring-reclass-model.git"
     reclass_data_revision: master
     reclass_config_master: 192.168.10.15
     single_address: ${_param:infra_config_address}

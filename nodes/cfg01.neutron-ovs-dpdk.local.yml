@@ -3,7 +3,7 @@ classes:
 parameters:
   _param:
     reclass_data_revision: master
-    reclass_data_repository: "https://github.com/AKamyshnikova/mcp-intel-lab-model.git"
+    reclass_data_repository: "https://github.com/Mirantis/vnf-onboaring-reclass-model.git"
     linux_system_codename: xenial
     salt_master_host: 192.168.10.15
     public_address: 172.16.98.4

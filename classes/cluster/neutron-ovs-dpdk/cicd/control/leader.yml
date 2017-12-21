@@ -123,7 +123,7 @@ parameters:
         neutron-ovs-dpdk:
           enabled: true
           description: Reclass model OVS based CICD enabled
-          upstream: https://github.com/AKamyshnikova/mcp-intel-lab-model.git
+          upstream: https://github.com/Mirantis/vnf-onboaring-reclass-model.git
           access: ${gerrit:client:default_access}
           require_change_id: true
           require_agreement: false
