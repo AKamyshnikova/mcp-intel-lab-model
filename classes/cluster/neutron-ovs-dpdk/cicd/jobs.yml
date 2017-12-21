@@ -139,3 +139,72 @@ parameters:
             VNF_OPTIONS:
               type: string
               default: "AVI_VERSION=17.2.3 AVI_USERNAME=admin AVI_PASSWORD=Swordfish1234 AVI_IMAGE_PASSWORD=58NFaGDJm(PJH0G AVI_OS_FLAVOR=avi_ctrl.small AVI_OS_IMAGE=avi-control-17.2.3"
+        test_refactor_plugins:
+          type: workflow-scm
+          name: test-vnf-onboarding
+          display_name: "Testing refactor plugins"
+          discard:
+            build:
+              keep_num: 20
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/sandbox"
+            credentials: "gerrit"
+            script: pipelines/test_vnf_onboarding.groovy
+          trigger:
+            gerrit:
+              project:
+                "sandbox":
+                  branches:
+                    - refactor_plugins
+              event:
+                patchset:
+                  - created:
+                      excludeDrafts: false
+                      excludeTrivialRebase: false
+                      excludeNoCodeChange: false
+                change:
+                 - merged
+                comment:
+                  - addedContains:
+                      commentAddedCommentContains: '(retest|recheck|reverify)'
+              message:
+                build_successful: "Build successful"
+                build_unstable: "Build unstable"
+                build_failure: "Build failed"
+          param:
+            DEFAULT_GIT_URL:
+              type: string
+              description: "Run against alternate system reclass"
+              default: "${_param:jenkins_gerrit_url}/sandbox"
+            DEFAULT_GIT_REF:
+              type: string
+              default: refactor_plugins
+            OPENSTACK_API_URL:
+              type: string
+              default: "http://172.16.98.19:5000/v2.0"
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              default: "openstack-test"
+            OPENSTACK_API_TENANT:
+              type: string
+              default: "test"
+            GERRIT_CREDENTIALS:
+              type: string
+              default: "gerrit"
+            ELASTIC_URL:
+              type: string
+              default: "192.168.20.60:9200"
+            DEBUG_OPTIONS:
+              type: string
+              description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
+            CUSTOM_CI_REPO:
+              type: string
+              description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
+            CUSTOM_CI_REPO_BRANCH:
+              type: string
+            CI_OPTIONS:
+              type: string
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+            VNF_OPTIONS:
+              type: string
