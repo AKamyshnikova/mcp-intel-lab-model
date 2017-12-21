@@ -61,11 +61,16 @@ parameters:
             DEBUG_OPTIONS:
               type: string
               description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
-            CUSTOM_CI_REPO:
+            NFV_PLATFORM_REPO:
               type: string
               description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
-            CUSTOM_CI_REPO_BRANCH:
+              default: "${_param:jenkins_gerrit_url}/sandbox"
+            NFV_PLATFORM_REPO_BRANCH:
               type: string
+              default: "master"
+            NFV_PLATFORM_REPO_CREDENTIALS:
+              type: string
+              default: "gerrit"
             CI_OPTIONS:
               type: string
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
@@ -126,13 +131,16 @@ parameters:
             DEBUG_OPTIONS:
               type: string
               description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
-            CUSTOM_CI_REPO:
+            NFV_PLATFORM_REPO:
               type: string
               description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
-              default: "https://gerrit.mcp.mirantis.net/vnf-onboarding/sandbox"
-            CUSTOM_CI_REPO_BRANCH:
+              default: "${_param:jenkins_gerrit_url}/sandbox"
+            NFV_PLATFORM_REPO_BRANCH:
               type: string
               default: "master"
+            NFV_PLATFORM_REPO_CREDENTIALS:
+              type: string
+              default: "gerrit"
             CI_OPTIONS:
               type: string
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
@@ -198,11 +206,16 @@ parameters:
             DEBUG_OPTIONS:
               type: string
               description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
-            CUSTOM_CI_REPO:
+            NFV_PLATFORM_REPO:
               type: string
               description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
-            CUSTOM_CI_REPO_BRANCH:
+              default: "${_param:jenkins_gerrit_url}/sandbox"
+            NFV_PLATFORM_REPO_BRANCH:
               type: string
+              default: "master"
+            NFV_PLATFORM_REPO_CREDENTIALS:
+              type: string
+              default: "gerrit"
             CI_OPTIONS:
               type: string
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
