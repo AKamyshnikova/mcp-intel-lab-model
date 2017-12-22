@@ -212,7 +212,7 @@ parameters:
               default: "${_param:jenkins_gerrit_url}/sandbox"
             NFV_PLATFORM_REPO_BRANCH:
               type: string
-              default: "master"
+	      default: "refactor_plugins"
             NFV_PLATFORM_REPO_CREDENTIALS:
               type: string
               default: "gerrit"
@@ -221,3 +221,5 @@ parameters:
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
             VNF_OPTIONS:
               type: string
+              default: "AVI_VERSION=17.2.3 AVI_USERNAME=admin AVI_PASSWORD=Swordfish1234 AVI_IMAGE_PASSWORD=58NFaGDJm(PJH0G AVI_OS_FLAVOR=avi_ctrl.small AVI_OS_IMAGE=avi-control-17.2.3"
+
