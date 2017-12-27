@@ -87,7 +87,7 @@ parameters:
               keep_num: 20
           scm:
             type: git
-            url: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net/vnf-onboarding/sandbox"
+            url: "ssh://mcp-gerrit@172.16.48.254/vnf-onboarding/sandbox"
             credentials: "gerrit"
             script: pipelines/test_vnf_onboarding_split.groovy
           trigger:
