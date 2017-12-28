@@ -26,6 +26,12 @@ parameters:
           sudo: true
           full_name: Anastasia Kuznetsova
           home: /home/akuznetsova
+        svasilenko:
+          enabled: true
+          name: svasilenko
+          sudo: true
+          full_name: Sergey Vasilenko
+          home: /home/svasilenko
   openssh:
     server:
       enabled: true
@@ -50,6 +56,12 @@ parameters:
           public_keys:
           - ${public_keys:akuznetsova}
           user: ${linux:system:user:akuznetsova}
+        svasilenko:
+          enabled: true
+          public_keys:
+          - ${public_keys:svasilenko}
+          user: ${linux:system:user:svasilenko}
+
   public_keys:
     alwex:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAA+QZpjjBIMLqQe/qLdvmRHEEfs4Op+wC8pCQ+TlDrl7sSRXB9FZb4fbJ9qQbVOgNT/2LdtGpSJneuCkiJHtBior678obTw53TCT97ap3H44x948mKP4hc3yv+jbHugtjFQCx4Gp1Ey0Dcyv6qPeASLbEmSbHtj8Dp6lJ06nbELMU1n9XMTNvf0dbOKuofoFNQLSunQDndfFHUQsPFwV5V6KUEWFwihW1j62b2YQVs5P5AG9Y84NpEwNzOt0F0lnaEZVwfWQtcNSq3CILTDF8TuH9JemTRaMBMX/F1cmVEotu2D1wbQzbTxKKW5NmZPazKhdoM7zB1JfXGTw==
@@ -59,3 +71,6 @@ parameters:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJFOEwYid83klmXcQs9QBDJwb1EG6Ly7DpJ32aH8gB8uguUPVO3rS/08GNav7+6GFLwlbWHVDe1MIFeNvyqh778B2piCzoajIT8aZFiutjbGtVPfkGkt94mibVutjO36eSEjEDW8GYQ2boisibha6B2mlz126y7nJN1VDSUr05Ro719i696vdN0fglu5DlT6qnOSei16EqkgQcMdyoxCfUOy9zBe3p1jGd2XKCOy3aGkhixEj6oaWSFRcA48SgqNSUO9A5NHTmWT/3j76Jsk92yw4e5OenWJbVx0BkU8q6U5fIncxkIQRYFUqB0X1TT9PnktDD4iJwNMXY7W2hYN2/ aleksey@aleksey-ThinkPad
     akuznetsova:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD033EOpc2jeEYkKPzmJL4j081hmt3Ml5hlrfJWYY7RRoKBugT1gF9zggI9GaFGn5F29g+92dYfLLH4yfkL91dkNtbsutl7XiHZYW5NIL5n8kHtb8Bahclid8ERMpLYlctqW/4RM5wfMyzh71TxbutN9ZjcbtAQ0bIaCoTyWRrIDiMeW/+Btf7bPpe7zyQMjkQu+F2iYxd6nERiMnVLq080XAqwuSGMy9NFBLvG+VoJV1w49f2Hf19TD1ILev/pttPYem/15/zAnwwR+nye91jBtBBaFI6V4aaYjgsrjEinNy48tfhMpbuELW5Nn3o8c+3Xfi2rRxtkNcfdpc/yvFz/
+    svasilenko:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbNUC2UJiVk0bHmbVBHd4L22M3Mc3HVPdZZja7gzzUJDI/MIGoTSX8/Q38olBHg6i/9ePzroMqQS70x/LvuEgfKMDUcEBhggq22zea/wohMmMPwiGTEJ3j0CfckXM2cfjRHweHu4U//4SiSgLHi3nnEhYJUvFkOq10qOtZd2iT76sbKpnIEcRVfDcIy01G/wZQLX0SiCk8hWh9ERBqnW2OjNhwG/a2SdoPN25T1HmHAhLJykcGXb7BmrMNe7XFcNsqleMsopTXcqtZBu+ysEbNywPQKUiJrwqOtzkncQwwuKlr53EaXwBY5UHQwoFSXXi28JjmvEZAzA+UBMrPDHrx svasilenko@mrnt
+
