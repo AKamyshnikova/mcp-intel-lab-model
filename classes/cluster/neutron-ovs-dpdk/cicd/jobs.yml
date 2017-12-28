@@ -173,7 +173,8 @@ parameters:
               project:
                 "sandbox":
                   branches:
-                    - master
+                    - compare_type: "ANT"
+                      name: "**"
               event:
                 comment:
                   - addedContains:
@@ -186,7 +187,7 @@ parameters:
             DEFAULT_GIT_URL:
               type: string
               description: "Run against alternate system reclass"
-              default: "${_param:jenkins_gerrit_url}/sandbox"
+              default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/nginx-vnf"
             DEFAULT_GIT_REF:
               type: string
               default: master
@@ -201,7 +202,7 @@ parameters:
               default: "dpyzhov"
             GERRIT_CREDENTIALS:
               type: string
-              default: "gerrit"
+              default: "mcp-gerrit"
             ELASTIC_URL:
               type: string
               default: "192.168.20.60:9200"
@@ -211,19 +212,19 @@ parameters:
             NFV_PLATFORM_REPO:
               type: string
               description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
-              default: "${_param:jenkins_gerrit_url}/sandbox"
+              default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/nfv-platform"
             NFV_PLATFORM_REPO_BRANCH:
               type: string
               default: "master"
             NFV_PLATFORM_REPO_CREDENTIALS:
               type: string
-              default: "gerrit"
+              default: "mcp-gerrit"
             CI_OPTIONS:
               type: string
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
             VNF_OPTIONS:
               type: string
-              default: "AVI_VERSION=17.2.3 AVI_USERNAME=admin AVI_PASSWORD=Swordfish1234 AVI_IMAGE_PASSWORD=58NFaGDJm(PJH0G AVI_OS_FLAVOR=avi_ctrl.small AVI_OS_IMAGE=avi-control-17.2.3"
+              default: ""
 
         test_refactor_plugins:
           type: workflow-scm
