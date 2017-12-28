@@ -125,10 +125,10 @@ parameters:
               default: "http://172.16.98.19:5000/v2.0"
             OPENSTACK_API_CREDENTIALS:
               type: string
-              default: "openstack-demo"
+              default: "test-openstack"
             OPENSTACK_API_TENANT:
               type: string
-              default: "demo"
+              default: "test"
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
