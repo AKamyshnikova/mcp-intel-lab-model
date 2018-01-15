@@ -1,6 +1,5 @@
 classes:
 - system.nova.compute.nfv.sriov
-- cluster.neutron-ovs-dpdk.openstack.compute
 - system.neutron.compute.nfv.sriov
 - system.linux.system.repo.ubuntu
 - system.linux.system.repo.saltstack.xenial
@@ -10,7 +9,6 @@ classes:
 - system.neutron.compute.cluster
 - system.ceilometer.agent.cluster
 - cluster.neutron-ovs-dpdk.infra
-
 parameters:
   _param:
     cluster_vip_address: ${_param:openstack_control_address}
@@ -33,8 +31,8 @@ parameters:
     primary_forth_nic: enp67s0f3
     sriov_nic01_physical_network: physnet3
     sriov_nic02_physical_network: physnet4
-    sriov_nic01_numvfs: 7
-    sriov_nic02_numvfs: 7
+    sriov_nic01_numvfs: 30
+    sriov_nic02_numvfs: 30
 
   neutron:
     compute:
@@ -122,12 +120,12 @@ parameters:
           - bond0.${_param:control_vlan}
         enp24s0f0:
           enabled: true
-          type: slave
+          type: eth
           proto: manual
           name: ${_param:sriov_nic01_device_name}
         enp24s0f1:
           enabled: true
-          type: slave
+          type: eth
           proto: manual
           name: ${_param:sriov_nic02_device_name}
         br_ten:
@@ -135,7 +133,7 @@ parameters:
           proto: manual
           type: bridge
           use_interfaces:
-          - bond1
+          - ${_param:sriov_nic01_device_name}
           use_ovs_ports:
           - prv-to-tenant
         br-prv:

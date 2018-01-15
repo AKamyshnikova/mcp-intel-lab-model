@@ -170,6 +170,7 @@ parameters:
             tenant_address: 10.0.2.103
             deploy_address: 192.168.10.103
             salt_master_host: 192.168.10.15
+            public_address: ''
             nova_cpu_pinning: 28,29,30,31,32,33,34,35,36,37,38,39,40,41
             compute_ovs_pmd_cpu_mask: '"0x1fff"'
             compute_ovs_dpdk_lcore_mask: "'0x2000'"
