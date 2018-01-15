@@ -162,7 +162,7 @@ parameters:
           name: cmp003
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.compute.purley_compute
+          - cluster.${_param:cluster_name}.openstack.compute.purley_sriov
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
