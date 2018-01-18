@@ -171,6 +171,9 @@ parameters:
           proto: static
           address: ${_param:public_address}
           netmask: ${_param:control_network_netmask}
+          name_servers:
+          - ${_param:dns_server01}
+          - ${_param:dns_server02}
           use_interfaces:
           - bond0.${_param:public_vlan}
     system:

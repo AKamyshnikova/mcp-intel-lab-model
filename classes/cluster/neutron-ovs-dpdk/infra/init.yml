@@ -55,7 +55,7 @@ parameters:
 
     tenant_network_netmask: 255.255.255.0
 
-    dns_server01: 172.18.80.136
+    dns_server01: 172.19.0.6
     dns_server02: 8.8.8.8
     deploy_network_netmask: 255.255.255.0
     deploy_network_gateway: 192.168.10.91
@@ -90,6 +90,9 @@ parameters:
       proto: static
       address: ${_param:public_address}
       netmask: ${_param:control_network_netmask}
+      name_servers:
+        - ${_param:dns_server01}
+        - ${_param:dns_server02}
 
   salt:
     minion:
