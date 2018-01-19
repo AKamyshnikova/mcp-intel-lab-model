@@ -66,6 +66,9 @@ parameters:
           address: ${_param:public_address}
           netmask: ${_param:public_network_netmask}
           gateway: ${_param:public_network_gateway}
+          name_servers:            
+          - ${_param:dns_server01} 
+          - ${_param:dns_server02} 
         br-floating:
           enabled: true
           type: ovs_bridge
