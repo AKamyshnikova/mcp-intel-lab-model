@@ -308,7 +308,7 @@ parameters:
         test_cloudify_blueprints:
           type: workflow-scm
           name: test_cloudify_blueprints
-          display_name: "Cloudify blueprints syntax check, packaging and upload"
+          display_name: "Cloudify blueprints check: syntax, packaging and upload"
           discard:
             build:
               keep_num: 20
@@ -339,6 +339,7 @@ parameters:
                   branches:
                     - compare_type: "ANT"
                       name: "**"
+              event:
                 comment:
                   - addedContains:
                       commentAddedCommentContains: 'bps-check'
