@@ -321,7 +321,7 @@ parameters:
             gerrit:
               project:
                 "^vnf-onboarding/(avi-loadbalancer|nfv-platform|nginx-vnf|metaswitch-vsbc)$":
-                compare_type: "REG_EXP"
+                  compare_type: "REG_EXP"
                   branches:
                     - compare_type: "ANT"
                       name: "**"
