@@ -29,8 +29,8 @@ parameters:
     primary_second_nic: enp67s0f1
     primary_third_nic: enp67s0f2
     primary_forth_nic: enp67s0f3
-    sriov_nic01_physical_network: physnet3
-    sriov_nic02_physical_network: physnet4
+    sriov_nic01_physical_network: physnet2
+    sriov_nic02_physical_network: physnet2
     sriov_nic01_numvfs: 30
     sriov_nic02_numvfs: 30
 
@@ -43,8 +43,17 @@ parameters:
             devname: ${_param:sriov_nic01_device_name}
             physical_network: ${_param:sriov_nic01_physical_network}
           sriov_nic02:
-            devname: ${_param:sriov_nic01_device_name}
-            physical_network: ${_param:sriov_nic01_physical_network}
+            devname: ${_param:sriov_nic02_device_name}
+            physical_network: ${_param:sriov_nic02_physical_network}
+  nova:
+    compute:
+      sriov:
+        sriov_nic01:
+          devname: ${_param:sriov_nic01_device_name}
+          physical_network: ${_param:sriov_nic01_physical_network}
+        sriov_nic02:
+          devname: ${_param:sriov_nic02_device_name}
+          physical_network: ${_param:sriov_nic02_physical_network}
 
   linux:
     network:
