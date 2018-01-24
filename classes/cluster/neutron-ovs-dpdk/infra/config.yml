@@ -182,13 +182,14 @@ parameters:
             name: cmp004
             domain: ${_param:cluster_domain}
             classes:
-            - cluster.${_param:cluster_name}.openstack.compute.purley_compute
+            - cluster.${_param:cluster_name}.openstack.compute.purley_sriov
             params:
               linux_system_codename: xenial
               single_address: 192.168.20.104
               tenant_address: 10.0.2.104
               deploy_address: 192.168.10.104
               salt_master_host: 192.168.10.15
+              public_address: ''
               nova_cpu_pinning: 36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53
               compute_ovs_pmd_cpu_mask: '"0x1fff"'
               compute_ovs_dpdk_lcore_mask: "'0x20000'"
