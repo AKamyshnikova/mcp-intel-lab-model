@@ -177,6 +177,9 @@ parameters:
         test-openstack:
           username: test
           password: test
+        admin-openstack:
+          username: admin
+          password: ${_param:keystone_admin_password}
         openstack_key:
           username: root
           key: |
