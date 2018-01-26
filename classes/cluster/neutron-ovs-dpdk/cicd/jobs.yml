@@ -139,6 +139,7 @@ parameters:
               default: "192.168.20.60:9200"
             DEBUG_OPTIONS:
               type: string
+              default: "skip_inspection=1"
               description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
             NFV_PLATFORM_REPO:
               type: string
