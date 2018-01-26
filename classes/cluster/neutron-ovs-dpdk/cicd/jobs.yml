@@ -245,6 +245,99 @@ parameters:
               type: string
               default: ""
 
+        test_pipeline:
+          type: workflow-scm
+          name: test-pipeline
+          display_name: "Test onboarding pipeline"
+          discard:
+            build:
+              keep_num: 20
+          scm:
+            type: git
+            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/sandbox"
+            credentials: "mcp-gerrit"
+            script: pipelines/test_pipeline.groovy
+          trigger:
+            gerrit:
+              project:
+                "vnf-onboarding/sandbox":
+                  branches:
+                    - compare_type: "ANT"
+                      name: "**"
+                  file-paths:
+                    - pattern: "pipelines/test_vnf_onboarding_split.groovy"
+              event:
+                patchset:
+                  - created:
+                      excludeDrafts: false
+                      excludeTrivialRebase: false
+                      excludeNoCodeChange: false
+                change:
+                  - merged
+                comment:
+                  - addedContains:
+                      commentAddedCommentContains: '(retest|recheck|reverify)'
+              message:
+                build_successful: "Build successful"
+                build_unstable: "Build unstable"
+                build_failure: "Build failed"
+          param:
+            DEFAULT_GIT_URL:
+              type: string
+              description: "Run against alternate system reclass"
+              default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/sandbox"
+            DEFAULT_GIT_REF:
+              type: string
+              default: "master"
+            JENKINSFILE:
+              type: string
+              default: "pipelines/test_vnf_onboarding_split.groovy"
+            PIPELINE_DEFAULT_GIT_URL:
+              type: string
+              description: "VNF repo"
+              default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/nginx-vnf"
+            PIPELINE_DEFAULT_GIT_REF:
+              type: string
+              default: "master"
+            PIPELINE_GERRIT_CREDENTIALS:
+              type: string
+              default: "mcp-gerrit"
+            OPENSTACK_API_URL:
+              type: string
+              default: "http://172.16.98.19:5000/v2.0"
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              default: "openstack-demo"
+            OPENSTACK_API_TENANT:
+              type: string
+              default: "demo"
+            GERRIT_CREDENTIALS:
+              type: string
+              default: "mcp-gerrit"
+            ELASTIC_URL:
+              type: string
+              default: "192.168.20.60:9200"
+            DEBUG_OPTIONS:
+              type: string
+              default: "skip_inspection=1"
+              description: "Example: skip_all=1 skip_deploy=1 skip_inspection=1"
+            NFV_PLATFORM_REPO:
+              type: string
+              description: "Take Cloudify blueprints, Dockerfile and CI scripts from this repo"
+              default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/nfv-platform"
+            NFV_PLATFORM_REPO_BRANCH:
+              type: string
+              default: "master"
+            NFV_PLATFORM_REPO_CREDENTIALS:
+              type: string
+              default: "mcp-gerrit"
+            CI_OPTIONS:
+              type: string
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+            VNF_OPTIONS:
+              type: string
+              default: ""
+
         test_avi_loadbalancer:
           type: workflow-scm
           name: test-avi-loadbalancer
