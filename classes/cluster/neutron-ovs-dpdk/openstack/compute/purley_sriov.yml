@@ -23,8 +23,6 @@ parameters:
     linux_system_codename: xenial
     sriov_nic01_device_name: enp24s0f0
     sriov_nic02_device_name: enp24s0f1
-    dpdk0_pci: "0000:18:00.0"
-    dpdk1_pci: "0000:18:00.1"
     primary_first_nic: enp67s0f0
     primary_second_nic: enp67s0f1
     primary_third_nic: enp67s0f2
