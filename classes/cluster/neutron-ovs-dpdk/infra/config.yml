@@ -34,7 +34,7 @@ parameters:
     linux_system_codename: xenial
     salt_api_password_hash: "$6$mJhnwdnVGxdhr3o0$uRJGwZ1SQoktIiRpbTJR87H9MguC7y6x7s8FDDDiia3Q0YgvQohurCq.eHDzVg3PJ9QNhxiobjIYpgSmsqbX40"
     salt_master_host: ${_param:infra_config_address}
-    apt_mk_version: nightly
+    apt_mk_version: stable
   reclass:
     storage:
       node:
