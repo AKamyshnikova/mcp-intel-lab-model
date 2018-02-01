@@ -1,4 +1,4 @@
-classes:
+      classes:
 - system.nova.compute.nfv.sriov
 - system.neutron.compute.nfv.sriov
 - system.linux.system.repo.ubuntu
@@ -54,6 +54,19 @@ parameters:
           physical_network: ${_param:sriov_nic02_physical_network}
 
   linux:
+    system:
+      kernel:
+        sriov: True
+        unsafe_interrupts: False
+      rc:
+        local: |
+          #!/bin/sh -e
+          # Enabling 7 VFs on eth1 PF
+          echo 30 > /sys/class/net/${_param:sriov_nic01_device_name}/device/sriov_numvfs; sleep 2; ip link set ${_param:sriov_nic01_device_name} up
+          # Enabling 15 VFs on eth2 PF
+          echo 30 > /sys/class/net/${_param:sriov_nic02_device_name}/device/sriov_numvfs; sleep 2; ip link set ${_param:sriov_nic02_device_name} up
+
+          exit 0
     network:
       host:
         hostname:
