@@ -214,10 +214,10 @@ parameters:
               default: "http://172.16.98.19:5000/v2.0"
             OPENSTACK_API_CREDENTIALS:
               type: string
-              default: "openstack-demo"
+              default: "test-openstack"
             OPENSTACK_API_TENANT:
               type: string
-              default: "demo"
+              default: "test-pipeline"
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
@@ -282,24 +282,24 @@ parameters:
                 build_unstable: "Build unstable"
                 build_failure: "Build failed"
           param:
-            DEFAULT_GIT_URL:
+            PIPELINE_DEFAULT_GIT_URL:
               type: string
               description: "Run against alternate system reclass"
               default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/sandbox"
-            DEFAULT_GIT_REF:
+            PIPELINE_DEFAULT_GIT_REF:
               type: string
               default: "master"
             JENKINSFILE:
               type: string
               default: "pipelines/test_vnf_onboarding_split.groovy"
-            PIPELINE_DEFAULT_GIT_URL:
+            DEFAULT_GIT_URL:
               type: string
               description: "VNF repo"
               default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/nginx-vnf"
-            PIPELINE_DEFAULT_GIT_REF:
+            DEFAULT_GIT_REF:
               type: string
               default: "master"
-            PIPELINE_GERRIT_CREDENTIALS:
+            GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
             OPENSTACK_API_URL:
@@ -311,7 +311,7 @@ parameters:
             OPENSTACK_API_TENANT:
               type: string
               default: "demo"
-            GERRIT_CREDENTIALS:
+            PIPELINE_GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
             ELASTIC_URL:
