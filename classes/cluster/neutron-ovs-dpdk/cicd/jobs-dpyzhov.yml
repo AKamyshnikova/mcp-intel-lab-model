@@ -274,6 +274,12 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
+            CLOUDIFY_IP:
+              type: string
+              default: "172.16.98.119"
+            CLOUDIFY_INTERNAL_IP:
+              type: string
+              default: "10.10.1.5"
             ELASTIC_URL:
               type: string
               default: "192.168.20.60:9200"
