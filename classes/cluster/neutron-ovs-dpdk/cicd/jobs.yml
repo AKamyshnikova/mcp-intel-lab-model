@@ -7,7 +7,7 @@ parameters:
         test_vnf_onboarding:
           type: workflow-scm
           name: test-vnf-onboarding
-          display_name: "VNF onboarding tests"
+          display_name: "VNF onboarding"
           discard:
             build:
               keep_num: 20
