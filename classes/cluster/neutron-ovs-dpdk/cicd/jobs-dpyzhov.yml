@@ -96,7 +96,7 @@ parameters:
               default: "mcp-gerrit"
             CI_OPTIONS:
               type: string
-              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key ARTIFACTORY_BASE_URL=https://artifactory.mcp.mirantis.net/artifactory"
             VNF_OPTIONS:
               type: string
               default: ""
@@ -171,7 +171,7 @@ parameters:
               default: "mcp-gerrit"
             CI_OPTIONS:
               type: string
-              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key ARTIFACTORY_BASE_URL=https://artifactory.mcp.mirantis.net/artifactory"
             VNF_OPTIONS:
               type: string
               default: ""
@@ -214,7 +214,7 @@ parameters:
               default: "mcp-gerrit"
             CI_OPTIONS:
               type: string
-              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key ARTIFACTORY_BASE_URL=https://artifactory.mcp.mirantis.net/artifactory"
 
         test_nginx_vnf_no_cfy:
           type: workflow-scm
@@ -293,7 +293,7 @@ parameters:
               default: "mcp-gerrit"
             CI_OPTIONS:
               type: string
-              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key"
+              default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key ARTIFACTORY_BASE_URL=https://artifactory.mcp.mirantis.net/artifactory"
             VNF_OPTIONS:
               type: string
               default: ""
