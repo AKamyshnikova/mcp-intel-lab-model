@@ -258,7 +258,7 @@ parameters:
               event:
                 comment:
                   - addedContains:
-                      commentAddedCommentContains: 'bps-check'
+                      commentAddedCommentContains: 'bps-check-internal'
               message:
                 build_successful: "Build successful"
                 build_unstable: "Build unstable"
