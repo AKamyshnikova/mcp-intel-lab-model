@@ -34,7 +34,7 @@ parameters:
       cert_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:proxy:common_name}.crt
       chain_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:proxy:common_name}-with-chain.crt
     cluster_vip_address: ${_param:openstack_proxy_address}
-    apt_mk_version: nightly
+    apt_mk_version: stable
 
   nginx:
     server:
