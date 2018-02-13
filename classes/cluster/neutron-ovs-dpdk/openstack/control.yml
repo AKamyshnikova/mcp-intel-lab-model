@@ -15,10 +15,8 @@ classes:
 - system.glance.control.cluster
 - system.nova.control.cluster
 - system.cinder.control.cluster
-- system.cinder.control.notification.messagingv2
 - system.cinder.volume.single
 - system.cinder.volume.notification.messagingv2
-- system.cinder.volume.single
 - system.heat.server.cluster
 - system.haproxy.proxy.listen.openstack.nova-placement
 - system.haproxy.proxy.listen.openstack.glare
@@ -44,6 +42,9 @@ parameters:
     cluster_node03_address: ${_param:openstack_control_node03_address}
     nova_vncproxy_url: http://${_param:cluster_public_host}:6080
     cluster_public_protocol: http
+  nova:
+    controller:
+      default_schedule_zone: nova
   neutron:
     server:
       backend:
