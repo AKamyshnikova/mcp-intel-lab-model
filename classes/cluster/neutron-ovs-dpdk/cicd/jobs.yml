@@ -134,6 +134,9 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
+            DOCKER_REGISTRY_URL:
+              type: string
+              default: "docker-prod-virtual.docker.mirantis.net"
             ELASTIC_URL:
               type: string
               default: "192.168.20.60:9200"
@@ -212,6 +215,9 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
+            DOCKER_REGISTRY_URL:
+              type: string
+              default: "docker-prod-virtual.docker.mirantis.net"
             ELASTIC_URL:
               type: string
               default: "192.168.20.60:9200"
