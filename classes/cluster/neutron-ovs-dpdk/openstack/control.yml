@@ -50,6 +50,19 @@ parameters:
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
         external_vlan_range: "${_param:neutron_external_vlan_range}"
+
+  cinder:
+    controller:
+      default_volume_type: reliance-nfs
+      backend:
+        reliance-nfs:
+          options: ""
+          type_name: nfs-driver
+          path: /var/lib/cinder/nfs/
+          engine: nfs
+          devices:
+          - 172.16.99.244:/nfs/intel
+
   linux:
     network:
       interface:
