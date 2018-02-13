@@ -134,7 +134,7 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
-            DOCKER_REGISTRY_URL:
+            VNF_DOCKER_REGISTRY_PATH:
               type: string
               default: "docker-prod-virtual.docker.mirantis.net"
             ELASTIC_URL:
@@ -215,7 +215,7 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
-            DOCKER_REGISTRY_URL:
+            VNF_DOCKER_REGISTRY_PATH:
               type: string
               default: "docker-prod-virtual.docker.mirantis.net"
             ELASTIC_URL:
