@@ -134,9 +134,6 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
-            VNF_DOCKER_REGISTRY_PATH:
-              type: string
-              default: "docker-prod-virtual.docker.mirantis.net"
             ELASTIC_URL:
               type: string
               default: "192.168.20.60:9200"
@@ -157,6 +154,9 @@ parameters:
             CI_OPTIONS:
               type: string
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key ARTIFACTORY_BASE_URL=https://artifactory.mcp.mirantis.net/artifactory"
+            VNF_DOCKER_REGISTRY_PATH:
+              type: string
+              default: "docker-dev-local.docker.mirantis.net/mirantis/vnf-onboarding"
             VNF_OPTIONS:
               type: string
               default: ""
@@ -215,9 +215,6 @@ parameters:
             GERRIT_CREDENTIALS:
               type: string
               default: "mcp-gerrit"
-            VNF_DOCKER_REGISTRY_PATH:
-              type: string
-              default: "docker-prod-virtual.docker.mirantis.net"
             ELASTIC_URL:
               type: string
               default: "192.168.20.60:9200"
@@ -237,6 +234,9 @@ parameters:
             CI_OPTIONS:
               type: string
               default: "CFY_AGENT_NET=cfm-net CFY_AGENT_FLAVOR=cfy.agent CFY_AGENT_IMAGE=ubuntu1 CFY_AGENT_USER=cfyuser CFY_SG=cfm-sg CFY_SSH_KEY_ID=openstack_key ARTIFACTORY_BASE_URL=https://artifactory.mcp.mirantis.net/artifactory"
+            VNF_DOCKER_REGISTRY_PATH:
+              type: string
+              default: "docker-dev-local.docker.mirantis.net/mirantis/vnf-onboarding"
             VNF_OPTIONS:
               type: string
               default: "AVI_VERSION=17.2.3 AVI_USERNAME=admin AVI_PASSWORD=Swordfish1234 AVI_IMAGE_PASSWORD=58NFaGDJm(PJH0G AVI_OS_FLAVOR=avi_ctrl.small AVI_OS_IMAGE=avi-control-17.2.3"
