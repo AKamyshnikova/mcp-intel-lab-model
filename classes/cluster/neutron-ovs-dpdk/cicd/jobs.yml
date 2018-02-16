@@ -89,9 +89,9 @@ parameters:
               keep_num: 20
           scm:
             type: git
-            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/sandbox"
+            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/pipelines"
             credentials: "mcp-gerrit"
-            script: pipelines/test_vnf_onboarding_split.groovy
+            script: test_vnf_onboarding.groovy
           trigger:
             gerrit:
               project:
@@ -170,9 +170,9 @@ parameters:
               keep_num: 20
           scm:
             type: git
-            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/sandbox"
+            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/pipelines"
             credentials: "mcp-gerrit"
-            script: pipelines/test_vnf_onboarding_split.groovy
+            script: test_vnf_onboarding.groovy
           trigger:
             gerrit:
               project:
@@ -250,9 +250,9 @@ parameters:
               keep_num: 20
           scm:
             type: git
-            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/sandbox"
+            url: "ssh://mcp-gerrit@172.16.48.254:29418/vnf-onboarding/pipelines"
             credentials: "mcp-gerrit"
-            script: pipelines/test_cloudify_blueprints.groovy
+            script: test_cloudify_blueprints.groovy
           trigger:
             gerrit:
               project:
