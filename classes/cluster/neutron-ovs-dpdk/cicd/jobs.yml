@@ -298,3 +298,77 @@ parameters:
               type: string
               description: "IP of already deployed Cloudify manager"
               default: "127.0.0.1"
+      platform_validation_pipeline:
+          type: workflow-scm
+          name: platform_validation_pipeline
+          display_name: "Validate OpenStack platform before deploy of VNF"
+          discard:
+            build:
+              keep_num: 20
+          scm:
+            type: git
+            url: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/pipelines"
+            credentials: "mcp-gerrit"
+            script: pipelines/test_platform.groovy
+          param:
+            OS_USERNAME:
+              type: string
+              description: "OpenStack admin user for running tests"
+              default: "platrform"
+            OS_PASSWORD:
+              type: string
+              description: "OpenStack admin user password for running tests"
+              default: "platform"
+            OS_PROJECT_NAME:
+              type: string
+              description: "OpenStack project name for running tests"
+              default: "platform-test"
+            OS_AUTH_URL:
+              type: string
+              description: "OpenStack auth url"
+              default: "http://${_param:openstack_control_address}:35357/v3"
+            IMAGE_ID:
+              type: string
+              description: "Specify image id to execute tests against custom images"
+              default: ""
+            FLAVOR_ID:
+              type: string
+              description: "Specify flavor id to execute tests against custom images"
+              default: ""
+            MIN_COMPUTE_NODES:
+              type: string
+              description: "Specify number of compute nodes of enviroment"
+              default: '2'
+            IMAGE_SSH_USER:
+              type: string
+              description: "Specify user name to login in test OpenStack VMs"
+              default: "cirros"
+            RALLY_TEMPEST_REPO:
+              type: string
+              description: "Repository with testing framework"
+              default: "https://gerrit.mcp.mirantis.net/mcp/rally-tempest.git"
+            RALLY_TEMPEST_BRANCH:
+              type: string
+              default: "master"
+            RALLY_TEMPEST_REPO_CREDENTIALS:
+              type: string
+              default: "mcp-platform"
+            TEMPEST_IMAGE_DOCKER_REGISTRY_PATH:
+              type: string
+              description: "Path for docker image with testing tool"
+              default: "https://docker-prod-local.docker.mirantis.net/mirantis/oscore/"
+            TEMPEST_IMAGE_NAME:
+              type: string
+              description: "Testing docker image name"
+              default: "rally-tempest:latest"
+            ELASTIC_URL:
+              type: string
+              default: "${_param:stacklight_log_address}:9200"
+            ELASTIC_TRANSFER_REPO:
+              type: string
+              description: "Repository with scripts for transfering test results to elastic search"
+              default: "ssh://mcp-gerrit@gerrit.mcp.mirantis.net:29418/vnf-onboarding/nfv-platform"
+            ELASTIC_TRANSFER_REPO_CREDENTIALS:
+              type: string
+              default: "mcp-gerrit"
+
