@@ -3,7 +3,6 @@ classes:
 - system.linux.system.repo.saltstack.xenial
 - system.linux.system.repo.mcp.openstack
 - system.linux.system.repo.mcp.extra
-- system.nova.compute.nfv.hugepages
 - system.nova.compute.nfv.cpu_pinning
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
