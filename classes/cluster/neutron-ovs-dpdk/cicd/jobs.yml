@@ -372,6 +372,11 @@ parameters:
               ELASTIC_TRANSFER_REPO_CREDENTIALS:
                 type: string
                 default: "mcp-gerrit"
+              DOCKER_TEMPEST_PARAMS:
+                type: string
+                default: ""
+                description: "Pass custom paramenters for tempest container. For example: PLUGIN_VERSION=<commit-id> PLUGIN_PATH=/tmp/test_dir"
+
 
         test_metaswitch_vnf:
             type: workflow-scm
